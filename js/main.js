@@ -97,7 +97,6 @@ main.hundlers = {
             return [  moment.parseZone(obj.Time).valueOf(), obj.Value ];
         });
     }
-
 };
 
 
@@ -122,7 +121,7 @@ main.Table = {
                     [15],
                     [15]
                 ],
-                "select": true,
+                // "select": true,
                 "responsive": true,
                 "data": leftTempListData,
                 "columnDefs": [{
@@ -166,27 +165,46 @@ main.Table = {
                 "dom": "t<'clear'><'row'<'col-md-12'p>>",
             });
 
-            // main.Table.object.on('click', 'tr', function(e) {
-            // });
+
             main.Table.object.on('click', 'td', function (e) {
-                $e = e.target || e.srcElement;
-                if ($($e).attr('id') == 'manua_input') return;
                 var _this = $(this);
-                if (!main.Table.inthisTrOpenInput(_this)) {
-                    main.helpfunc.closeInputInTable();
-                }
-                if (main.Table.ismanualTd(_this) && !main.Table.hasOpenManual()) {
+             var tr =  main.Table.selected.closestTr(_this);
+             if(main.Table.selected.isSelectedTr(false, tr)  &&  !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {  $spop.message.warn('Данные устройства отображены');}
+             // if tr  selected and this no manual td
+             if(main.Table.selected.isSelectedTr(false, tr)  && ! main.Table.ismanualTd(_this)){  $spop.message.warn('Данные устройства отображены'); return;}
+             // if this no selected tr and no  open manual td
+             if(!main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {
+                 main.Table.selected.remove(false, main.Table.selected.findSelected(_this));
+                 main.Table.selected.set(_this);
+                 main.Table.getDataMainChart(main.Table.getIdDecive(_this));
+             }else if (main.Table.ismanualTd(_this) && !main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual()  ) {
                     var inst = main.Table.manualInst(_this);
                     _this.empty();
                     _this.append(main.Table.inputHTML(inst));
                     main.Table.addfuncbtn();
+                    main.Table.selected.remove(false, main.Table.selected.findSelected(_this));
+                    main.Table.selected.set(_this);
                     main.Table.getDataMainChart(main.Table.getIdDecive(_this));
-                } else {
-                    main.Table.getDataMainChart(main.Table.getIdDecive(_this));
-                }
+                }else if(main.Table.ismanualTd(_this) &&  !main.Table.hasOpenManual() && main.Table.selected.isSelectedTr(false, tr) ){
+                 var inst = main.Table.manualInst(_this);
+                 _this.empty();
+                 _this.append(main.Table.inputHTML(inst));
+                 main.Table.addfuncbtn();
+
+             }else {
+                     $spop.message.warn('Закройте сначала поле для редактирования');
+                     return;
+             }
             });
 
         }
+    },
+    selected:{
+        findSelected:function(el) {return el.closest('tbody').find('.selected')},
+      set:function(td,tr) { tr ? tr.addClass('selected') :td.closest('tr').addClass('selected')},
+      remove: function (td,tr) { tr ? tr.removeClass('selected') :td.closest('tr').removeClass('selected')},
+        isSelectedTr: function (td,tr ) { return tr ? tr.hasClass('selected') : td.hasClass('selected')},
+        closestTr: function (el) { return el.closest('tr'); }
     },
     getDataMainChart: function (id) {
         chart.Ajax.sendFileToProccess(main.routes.getchartperiod, {'DeviceId': id}, main.Table.setMainChartData);
@@ -201,9 +219,9 @@ main.Table = {
             main.data.device = data.ChartPeriod.BelongsToDevice.toString();
             main.data.chartmain = main.hundlers.isetmainChartData( dataChart);
             chart.init.main(main.data.chartmain);
-
         } else {
             console.log('error get mainChart Data');
+            $spop.message.error('Ошибка получения данных главного графика');
         }
 
     },

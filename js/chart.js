@@ -10,9 +10,15 @@ chart.helpfunc = {};
 chart.hundlers = {
     error: function (err) {
         console.log(err);
+        $spop.message.error(err);
     },
     getDataDevice: function (data) {
-        console.log(data);
+        if(data.IsSuccess){
+            $spop.message.success('Данные устройства обновлены');
+        }else {
+            $spop.message.error('Даные устройства не обновлены');
+        }
+
     },
     getChildData: function (y) {
         var data = main.data.chartmain.filter((arr) => arr[1] === y)[0][0];
@@ -23,7 +29,6 @@ chart.hundlers = {
             'Month': _moment[1],
             'Day': _moment[2]
         };
-
         chart.Ajax.sendFileToProccess(main.routes.getchartday, param, chart.hundlers.setChildData);
     },
     setChildData: function (data) {
@@ -103,13 +108,6 @@ chart.init = {
                             'day',
                             [1]
                         ],
-                        // [
-                        //     'week', // unit name
-                        //     [1] // allowed multiples
-                        // ],
-                        // [
-                        //     'month', [1, 2, 3, 4, 6]
-                        // ]
                     ]
                 }
             }]

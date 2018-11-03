@@ -5,84 +5,92 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.3/css/select.bootstrap4.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap4.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.3/css/select.bootstrap4.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap4.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/spop.css"/>
+     <!--Manual CSS -->
     <link rel="stylesheet" href="css/preloader.css"/>
     <link rel="stylesheet" href="css/style.css">
-
-
+    <!--End Manual CSS-->
     <title>Test</title>
 </head>
 
 <body>
 <!-- Preloader Start -->
-<div id="loader-wrapper"  hidden="true">
+<div id="loader-wrapper" hidden="true">
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
 <!-- Preloader End -->
 
-    <section class="scheduleSection">
-        <h1 class="mainTitle">Счетчик 12569807 ул. Семилучева, д.7</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-md">
-                    <h3 class="subTitle">Общее потребление ...</h3>
-                    <div class="scheduleBox">
-                        <p>График потребления за весь период</p>
-                        <div id="chartMain" class="schedule"></div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <h3 class="subTitle">Суточные показания ...</h3>
-                    <div class="scheduleBox">
-                        <p>График потребления за сутки</p>
-                        <div id='chartChild' class="schedule"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="tableSection">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg">
-                    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="display table table-bordered" id="lines_dataTables">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>№ абонента</th>
-                                <th>Адрес</th>
-                                <th>Вес импульса</th>
-                                <th>Показания</th>
-                                <th>Ошибка</th>
-                                <th>Заряд батареи</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
 
+<section class="scheduleSection">
+    <h1 class="mainTitle">Счетчик 12569807 ул. Семилучева, д.7</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <h3 class="subTitle">Общее потребление ...</h3>
+                <div class="scheduleBox">
+                    <p>График потребления за весь период</p>
+                    <div id="chartMain" class="schedule"></div>
+                </div>
+            </div>
+            <div class="col-md">
+                <h3 class="subTitle">Суточные показания ...</h3>
+                <div class="scheduleBox">
+                    <p>График потребления за сутки</p>
+                    <div id='chartChild' class="schedule"></div>
+                </div>
             </div>
         </div>
-    </section>
-    <script src="lib/jquery-3.2.1.js"></script>
-    <script src="lib/jquery.dataTables.js"></script>
-    <script src="lib/resp.bootstrap4.js"></script>
-    <script src="lib/dataTables.select.js"></script>
-    <script src="lib/buttons.bootstrap4.js"></script>
-    <script src="lib/dataTables.buttons.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
-    <script src="lib/highcharts.js"></script>
-    <script src ="lib/moment.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/main.js"></script>
+    </div>
+</section>
+<section class="tableSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" class="display table table-bordered"
+                       id="lines_dataTables">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>№ абонента</th>
+                        <th>Адрес</th>
+                        <th>Вес импульса</th>
+                        <th>Показания</th>
+                        <th>Ошибка</th>
+                        <th>Заряд батареи</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--Lib Start-->
+<script src="lib/jquery-3.2.1.js"></script>
+<script src="lib/jquery.dataTables.js"></script>
+<script src="lib/resp.bootstrap4.js"></script>
+<script src="lib/dataTables.select.js"></script>
+<script src="lib/buttons.bootstrap4.js"></script>
+<script src="lib/dataTables.buttons.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/highcharts.js"></script>
+<script src="lib/moment.js"></script>
+<script src="lib/spop.min.js"></script>
+<!--Lib End-->
+ <!--Manual Ls-->
+<script src="js/spop-message.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/main.js"></script>
+<!--End Manual Js-->
 </body>
 
 </html>
