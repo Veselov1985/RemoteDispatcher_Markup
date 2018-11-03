@@ -132,8 +132,10 @@ chart.Ajax = {
                 chart.hundlers.error(textStatus);
             },
             beforeSend: function () {
+                main.helpfunc.preloader.show();
             },
             complete: function () {
+                main.helpfunc.preloader.hidden();
             }
         });
     },

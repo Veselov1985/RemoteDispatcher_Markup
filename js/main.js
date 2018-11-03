@@ -10,11 +10,12 @@ main.routes = {
 };
 main.elements = {
     buttons: {},
+    preloader:{id:'loader-wrapper',el:{}},
     chart: {
-        chartMain: {id: 'chartMain', el: ''},
-        chartChild: {id: 'chartChild', el: ''}
+        chartMain: {id: 'chartMain', el: {}},
+        chartChild: {id: 'chartChild', el: {}}
     },
-    table: {id: 'lines_dataTables', el: ''}
+    table: {id: 'lines_dataTables', el: {}}
 };
 
 main.data = {
@@ -33,6 +34,8 @@ main.init = {
         // Таблица
         main.Table.object = main.helpfunc.getobject(main.elements.table.id);
         main.elements.table.el = main.helpfunc.getobject(main.elements.table.id);
+        // preloader
+        main.elements.preloader.el = main.helpfunc.getobject( main.elements.preloader.id);
     }
 };
 
@@ -48,6 +51,14 @@ main.helpfunc = {
         var td = inp.closest('td');
         td.empty();
         td.text(inpprew);
+    },
+    preloader:{
+        show: function () {
+            main.elements.preloader.el.prop('hidden',false);
+        },
+        hidden: function () {
+            main.elements.preloader.el.prop('hidden',true);
+        },
     }
 };
 
@@ -259,10 +270,16 @@ main.Table = {
                 return el;
             }
         });
-        return result;
+        return  {
+                'DeviceId': `${result.Id}`,
+                'Abonent': `${result.Abonent}`,
+                'Address':`${result.Address}`,
+                'Impulse':`${result.Impulse}`
+            }
+
     },
     setTdmanualvalue: function (input, key, newvalue) {
-        var td = input.closest('tr').find('td')[key]
+        var td = input.closest('tr').find('td')[key];
         var $td = $(td);
         $td.empty();
         $td.text(newvalue);
