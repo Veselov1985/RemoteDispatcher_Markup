@@ -89,12 +89,12 @@ main.hundlers = {
     },
     isetmainChartData: function (data) {
        return data.map(function (obj) {
-            return [ moment(obj.Date).valueOf(), obj.Value ];
+            return [ moment.parseZone(obj.Date).valueOf(), obj.Value ];
         });
     },
     isetchildChartData(data){
         return data.map(function (obj) {
-            return [ moment(obj.Time).valueOf(), obj.Value ];
+            return [  moment.parseZone(obj.Time).valueOf(), obj.Value ];
         });
     }
 
@@ -274,7 +274,7 @@ main.Table = {
                 'DeviceId': `${result.Id}`,
                 'Abonent': `${result.Abonent}`,
                 'Address':`${result.Address}`,
-                'Impulse':`${result.Impulse}`
+                'Impulse':`${result.Impulse}`.replace('.',',')
             }
 
     },
