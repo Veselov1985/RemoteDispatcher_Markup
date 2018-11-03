@@ -1,0 +1,21 @@
+body{
+  text-align: center;
+}
+
+.mainTitle{
+  text-align: center;
+  margin: 20px 0;
+}
+
+.scheduleBox p{
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 0;
+}
+.schedule{
+  border: 1px solid #ccc;
+  min-height: 300px;
+}
+.tableSection{
+  margin-top: 20px;
+}
