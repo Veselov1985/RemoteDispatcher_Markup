@@ -7,9 +7,7 @@ main.routes = {
     getchartperiod: main.root + 'api/demo/getchartperiod', //  ->  {'DeviceId':'100001001'}
     getchartday: main.root + 'api/demo/getchartday', //->  {'DeviceId':'100001001', 'Year':'2018', 'Month':'10', 'Day':'22'}
     setdevicedata: main.root + 'api/demo/setdevicedata' // ->  {'DeviceId':'100001001','Abonent':'abc', 'Address':'def', 'Impulse':'0.05'}
-
 };
-
 main.elements = {
     buttons: {},
     chart: {
@@ -104,7 +102,6 @@ main.Table = {
                 main.Table.dataTable.dt = {};
             }
         },
-
         init: function (leftTempListData) {
             main.Table.dataTable.clean();
             main.Table.dataTable.dt = main.Table.object.DataTable({
@@ -158,10 +155,8 @@ main.Table = {
                 "dom": "t<'clear'><'row'<'col-md-12'p>>",
             });
 
-
             // main.Table.object.on('click', 'tr', function(e) {
             // });
-
             main.Table.object.on('click', 'td', function (e) {
                 $e = e.target || e.srcElement;
                 if ($($e).attr('id') == 'manua_input') return;

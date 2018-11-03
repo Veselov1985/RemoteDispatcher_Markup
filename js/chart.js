@@ -31,7 +31,7 @@ chart.hundlers = {
         if (data.IsSuccess) {
             var dataChart = data.ChartDay.ChartHours;
             main.data.chartChild = main.hundlers.isetchildChartData(dataChart);
-            chart.init.child();
+             chart.init.child();
         } else {
             console.log('error get childChart Data');
         }
