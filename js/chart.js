@@ -8,13 +8,19 @@ chart.data = {
 chart.helpfunc = {};
 
 chart.hundlers = {
-    error: function(err) {
+    error: function (err) {
         console.log(err);
+        $spop.message.error(err);
     },
-    getDataDevice: function(data) {
-        console.log(data);
+    getDataDevice: function (data) {
+        if(data.IsSuccess){
+            $spop.message.success('Данные устройства обновлены');
+        }else {
+            $spop.message.error('Даные устройства не обновлены');
+        }
+
     },
-    getChildData: function(y) {
+    getChildData: function (y) {
         var data = main.data.chartmain.filter((arr) => arr[1] === y)[0][0];
         var _moment = moment(data).format('YYYY-MM-DD').split('-'); //getChildData
         var param = {
@@ -26,12 +32,12 @@ chart.hundlers = {
 
         chart.Ajax.sendFileToProccess(main.routes.getchartday, param, chart.hundlers.setChildData);
     },
-    setChildData: function(data) {
+    setChildData: function (data) {
         // Обработка данных Child графика
         if (data.IsSuccess) {
             var dataChart = data.ChartDay.ChartHours;
             main.data.chartChild = main.hundlers.isetchildChartData(dataChart);
-            chart.init.child();
+             chart.init.child();
         } else {
             console.log('error get childChart Data');
         }
@@ -40,7 +46,7 @@ chart.hundlers = {
 };
 
 chart.init = {
-    child: function() {
+    child: function () {
         $('#chartChild').empty();
         Highcharts.stockChart('chartChild', {
             chart: {
@@ -61,14 +67,15 @@ chart.init = {
                 dataGrouping: {
                     units: [
                         [
-                            'day', [1]
+                            'day',
+                            [1]
                         ],
                     ]
                 }
             }]
         });
     },
-    main: function() {
+    main: function () {
         $('#chartMain').empty();
         $('#chartChild').empty();
         Highcharts.stockChart('chartMain', {
@@ -85,7 +92,7 @@ chart.init = {
                     cursor: 'pointer',
                     point: {
                         events: {
-                            click: function() {
+                            click: function () {
                                 chart.hundlers.getChildData(this.y);
                             }
                         }
@@ -99,8 +106,9 @@ chart.init = {
                 dataGrouping: {
                     units: [
                         [
-                            'day', [1]
-                        ]
+                            'day',
+                            [1]
+                        ],
                     ]
                 }
             }]
@@ -110,24 +118,25 @@ chart.init = {
 
 
 chart.Ajax = {
-    sendFileToProccess: function(url, data, success) {
+    sendFileToProccess: function (url, data, success) {
         $.ajax({
             url: url,
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data ? data : {}),
-            success: function(data, textStatus, jqXHR) {
+            success: function (data, textStatus, jqXHR) {
                 success(data);
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 chart.hundlers.error(textStatus);
             },
-            beforeSend: function() {
+            beforeSend: function () {
                 main.helpfunc.preloader.show();
             },
-            complete: function() {
+            complete: function () {
                 main.helpfunc.preloader.hidden();
             }
         });
     },
 };
+
