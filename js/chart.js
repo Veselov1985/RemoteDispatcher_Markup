@@ -37,6 +37,8 @@ chart.hundlers = {
         if (data.IsSuccess) {
             var dataChart = data.ChartDay.ChartHours;
             main.data.chartChild = main.hundlers.isetchildChartData(dataChart);
+            // TODO возможно отображать расход за день нужно после получения данных с бэка (сейчас эти данные мы берем по клику на главном графике)
+            // main.hundlers.span.setChildSpan();
              chart.init.child();
         } else {
             console.log('error get childChart Data');
@@ -94,6 +96,7 @@ chart.init = {
                         events: {
                             click: function () {
                                 chart.hundlers.getChildData(this.y);
+                                main.hundlers.span.setChildSpan(this.y)
                             }
                         }
                     }

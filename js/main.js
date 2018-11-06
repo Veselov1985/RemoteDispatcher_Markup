@@ -10,12 +10,26 @@ main.routes = {
 };
 main.elements = {
     buttons: {},
-    preloader:{id:'loader-wrapper',el:{}},
+    preloader: {id: 'loader-wrapper', el: {}},
     chart: {
         chartMain: {id: 'chartMain', el: {}},
         chartChild: {id: 'chartChild', el: {}}
     },
-    table: {id: 'lines_dataTables', el: {}}
+    table: {id: 'lines_dataTables', el: {}},
+    span: {
+        // главный график
+        // название прибора
+        deviceInst: {id: 'deviceInst', el: {}},
+        // адресс
+        adressInst: {id: 'adressInst', el: {}},
+        // расход за все время
+        totalСonsumption: {id: 'totalСonsumption', el: {}},
+
+        //  расход за сутки
+        dayConsumption: {id: 'dayConsumption', el: {}}
+
+
+    }
 };
 
 main.data = {
@@ -23,7 +37,7 @@ main.data = {
     chartmain: [],
     chartChild: [],
     table: [],
-    device:'',
+    device: '',
 };
 
 main.init = {
@@ -35,7 +49,13 @@ main.init = {
         main.Table.object = main.helpfunc.getobject(main.elements.table.id);
         main.elements.table.el = main.helpfunc.getobject(main.elements.table.id);
         // preloader
-        main.elements.preloader.el = main.helpfunc.getobject( main.elements.preloader.id);
+        main.elements.preloader.el = main.helpfunc.getobject(main.elements.preloader.id);
+        // span View
+        main.elements.span.deviceInst.el = main.helpfunc.getobject(main.elements.span.deviceInst.id);
+        main.elements.span.adressInst.el = main.helpfunc.getobject(main.elements.span.adressInst.id);
+        main.elements.span.totalСonsumption.el = main.helpfunc.getobject(main.elements.span.totalСonsumption.id);
+        main.elements.span.dayConsumption.el = main.helpfunc.getobject(main.elements.span.dayConsumption.id);
+
     }
 };
 
@@ -52,12 +72,12 @@ main.helpfunc = {
         td.empty();
         td.text(inpprew);
     },
-    preloader:{
+    preloader: {
         show: function () {
-            main.elements.preloader.el.prop('hidden',false);
+            main.elements.preloader.el.prop('hidden', false);
         },
         hidden: function () {
-            main.elements.preloader.el.prop('hidden',true);
+            main.elements.preloader.el.prop('hidden', true);
         },
     }
 };
@@ -88,15 +108,39 @@ main.hundlers = {
         });
     },
     isetmainChartData: function (data) {
-       return data.map(function (obj) {
-            return [ moment.parseZone(obj.Date).valueOf(), obj.Value ];
+        return data.map(function (obj) {
+            return [moment.parseZone(obj.Date).valueOf(), obj.Value];
         });
     },
-    isetchildChartData(data){
+    isetchildChartData(data) {
         return data.map(function (obj) {
-            return [  moment.parseZone(obj.Time).valueOf(), obj.Value ];
+            return [moment.parseZone(obj.Time).valueOf(), obj.Value];
         });
+    },
+    span: {
+        setMainSpan: function (id) {
+          var resObj =  main.data.main.filter(function (val) {
+                return  val.Id.toString() == id;
+            })[0];
+            main.hundlers.span.setTextSpan(main.elements.span.deviceInst.el, resObj.Id);
+            main.hundlers.span.setTextSpan(main.elements.span.adressInst.el, resObj.Address);
+           main.hundlers.span.setTextSpan(main.elements.span.totalСonsumption.el, resObj.Indication.toString()+' м3')
+
+        },
+        setChildSpan: function (total) {
+          // var totalChild = main.data.chartChild.reduce(function (sum,next) {
+          //     return sum + next[1];
+          // },0);
+            main.hundlers.span.setTextSpan(main.elements.span.dayConsumption.el, total.toString()+ ' м3');
+        },
+        setTextSpan: function (el, text) {
+            el.text(text);
+        },
+        cleanSpanText: function (el) {
+            el.text('')
+        }
     }
+
 };
 
 
@@ -166,45 +210,68 @@ main.Table = {
             });
 
 
-            main.Table.object.on('click', 'td', function (e) {
+            main.Table.object.on('click', 'td', function () {
                 var _this = $(this);
-             var tr =  main.Table.selected.closestTr(_this);
-             if(main.Table.selected.isSelectedTr(false, tr)  &&  !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {  $spop.message.warn('Данные устройства отображены');}
-             // if tr  selected and this no manual td
-             if(main.Table.selected.isSelectedTr(false, tr)  && ! main.Table.ismanualTd(_this)){  $spop.message.warn('Данные устройства отображены'); return;}
-             // if this no selected tr and no  open manual td
-             if(!main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {
-                 main.Table.selected.remove(false, main.Table.selected.findSelected(_this));
-                 main.Table.selected.set(_this);
-                 main.Table.getDataMainChart(main.Table.getIdDecive(_this));
-             }else if (main.Table.ismanualTd(_this) && !main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual()  ) {
+                var tr = main.Table.selected.closestTr(_this);
+                if (main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {
+                    $spop.message.warn('Данные устройства отображены');
+                    return;
+                }
+                // if tr  selected and this no manual td
+                if (main.Table.selected.isSelectedTr(false, tr) && !main.Table.ismanualTd(_this)) {
+                    $spop.message.warn('Данные устройства отображены');
+                    return;
+                }
+                // if this no selected tr and no  open manual td
+                if (!main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {
+                    main.Table.selected.remove(false, main.Table.selected.findSelected(_this));
+                    main.Table.selected.set(_this);
+                    var idDevice = main.Table.getIdDecive(_this);
+                    main.hundlers.span.setMainSpan(idDevice);
+                    // clean child total consumption
+                    main.hundlers.span.cleanSpanText(main.elements.span.dayConsumption.el);
+                    main.Table.getDataMainChart(idDevice);
+                } else if (main.Table.ismanualTd(_this) && !main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual()) {
                     var inst = main.Table.manualInst(_this);
                     _this.empty();
                     _this.append(main.Table.inputHTML(inst));
                     main.Table.addfuncbtn();
                     main.Table.selected.remove(false, main.Table.selected.findSelected(_this));
                     main.Table.selected.set(_this);
-                    main.Table.getDataMainChart(main.Table.getIdDecive(_this));
-                }else if(main.Table.ismanualTd(_this) &&  !main.Table.hasOpenManual() && main.Table.selected.isSelectedTr(false, tr) ){
-                 var inst = main.Table.manualInst(_this);
-                 _this.empty();
-                 _this.append(main.Table.inputHTML(inst));
-                 main.Table.addfuncbtn();
-
-             }else {
-                     $spop.message.warn('Закройте сначала поле для редактирования');
-                     return;
-             }
+                    var idDevice = main.Table.getIdDecive(_this);
+                    main.hundlers.span.setMainSpan(idDevice);
+                    // clean child total consumption
+                    main.hundlers.span.cleanSpanText(main.elements.span.dayConsumption.el);
+                    main.Table.getDataMainChart(idDevice);
+                } else if (main.Table.ismanualTd(_this) && !main.Table.hasOpenManual() && main.Table.selected.isSelectedTr(false, tr)) {
+                    var inst = main.Table.manualInst(_this);
+                    _this.empty();
+                    _this.append(main.Table.inputHTML(inst));
+                    main.Table.addfuncbtn();
+                } else {
+                    $spop.message.warn('Закройте сначала поле для редактирования');
+                    return;
+                }
             });
 
         }
     },
-    selected:{
-        findSelected:function(el) {return el.closest('tbody').find('.selected')},
-      set:function(td,tr) { tr ? tr.addClass('selected') :td.closest('tr').addClass('selected')},
-      remove: function (td,tr) { tr ? tr.removeClass('selected') :td.closest('tr').removeClass('selected')},
-        isSelectedTr: function (td,tr ) { return tr ? tr.hasClass('selected') : td.hasClass('selected')},
-        closestTr: function (el) { return el.closest('tr'); }
+    selected: {
+        findSelected: function (el) {
+            return el.closest('tbody').find('.selected')
+        },
+        set: function (td, tr) {
+            tr ? tr.addClass('selected') : td.closest('tr').addClass('selected')
+        },
+        remove: function (td, tr) {
+            tr ? tr.removeClass('selected') : td.closest('tr').removeClass('selected')
+        },
+        isSelectedTr: function (td, tr) {
+            return tr ? tr.hasClass('selected') : td.hasClass('selected')
+        },
+        closestTr: function (el) {
+            return el.closest('tr');
+        }
     },
     getDataMainChart: function (id) {
         chart.Ajax.sendFileToProccess(main.routes.getchartperiod, {'DeviceId': id}, main.Table.setMainChartData);
@@ -217,7 +284,7 @@ main.Table = {
         if (data.IsSuccess) {
             var dataChart = data.ChartPeriod.ChartDates;
             main.data.device = data.ChartPeriod.BelongsToDevice.toString();
-            main.data.chartmain = main.hundlers.isetmainChartData( dataChart);
+            main.data.chartmain = main.hundlers.isetmainChartData(dataChart);
             chart.init.main(main.data.chartmain);
         } else {
             console.log('error get mainChart Data');
@@ -288,12 +355,12 @@ main.Table = {
                 return el;
             }
         });
-        return  {
-                'DeviceId': `${result.Id}`,
-                'Abonent': `${result.Abonent}`,
-                'Address':`${result.Address}`,
-                'Impulse':`${result.Impulse}`.replace('.',',')
-            }
+        return {
+            'DeviceId': `${result.Id}`,
+            'Abonent': `${result.Abonent}`,
+            'Address': `${result.Address}`,
+            'Impulse': `${result.Impulse}`.replace('.', ',')
+        }
 
     },
     setTdmanualvalue: function (input, key, newvalue) {

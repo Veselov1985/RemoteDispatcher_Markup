@@ -32,18 +32,18 @@
 
 
     <section class="scheduleSection">
-        <h1 class="mainTitle">Счетчик 12569807 ул. Семилучева, д.7</h1>
+        <h1 class="mainTitle">Счетчик <span id="deviceInst"></span> - <span id="adressInst"></span></h1>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md">
-                    <h3 class="subTitle">Общее потребление ...</h3>
+                    <h3 class="subTitle">Общее потребление <span id="totalСonsumption"></span></h3>
                     <div class="scheduleBox">
                         <p>График потребления за весь период</p>
                         <div id="chartMain" class="schedule"></div>
                     </div>
                 </div>
                 <div class="col-md">
-                    <h3 class="subTitle">Суточные показания ...</h3>
+                    <h3 class="subTitle">Суточные показания <span id="dayConsumption"></span></h3>
                     <div class="scheduleBox">
                         <p>График потребления за сутки</p>
                         <div id='chartChild' class="schedule"></div>
@@ -77,9 +77,9 @@
     <!--Lib Start-->
     <script src="lib/jquery-3.2.1.js"></script>
     <script src="lib/jquery.dataTables.js"></script>
-    <script src="lib/resp.bootstrap4.js"></script>
+    <!--<script src="lib/resp.bootstrap4.js"></script>-->
     <script src="lib/dataTables.select.js"></script>
-    <script src="lib/buttons.bootstrap4.js"></script>
+    <!--<script src="lib/buttons.bootstrap4.js"></script>-->
     <script src="lib/dataTables.buttons.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/highcharts.js"></script>
