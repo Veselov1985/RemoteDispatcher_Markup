@@ -1,5 +1,55 @@
 var chart = {};
 
+chart.lang = {
+    options: {
+        weekdays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+        months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+        shortMonths: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+        rangeSelectorZoom: '',
+        rangeSelectorFrom: 'С',
+        rangeSelectorTo: 'по'
+    },
+    rangeSelector: {
+        inputDateFormat: '%e %b, %Y',
+        selected: 1,
+        enabled: true,
+        buttons: [
+            {
+                type: 'month',
+                count: 1,
+                text: '1 мес'
+            },
+            {
+                type: 'month',
+                count: 3,
+                text: '3 мес'
+            },
+            {
+                type: 'month',
+                count: 6,
+                text: '6 мес'
+            },
+            {
+                type: 'ytd',
+                text: 'С 1 янв'
+            },
+            {
+                type: 'year',
+                count: 1,
+                text: '1 год'
+            },
+            {
+                type: 'all',
+                text: 'Все'
+            }
+        ],
+        buttonSpacing: 4,
+        buttonTheme: {
+            width: 50
+        }
+    },
+};
+
 chart.data = {
     devices: [],
     devicesInst: [],
@@ -50,12 +100,16 @@ chart.hundlers = {
 chart.init = {
     child: function () {
         $('#chartChild').empty();
+        Highcharts.setOptions({
+            lang:chart.lang.options,
+        });
         Highcharts.stockChart('chartChild', {
+
             chart: {
                 alignTicks: false
             },
             rangeSelector: {
-                selected: 1
+                enabled: false,
             },
             plotOptions: {
                 series: {
@@ -80,13 +134,52 @@ chart.init = {
     main: function () {
         $('#chartMain').empty();
         $('#chartChild').empty();
+        Highcharts.setOptions({
+            lang: chart.lang.options,
+        });
         Highcharts.stockChart('chartMain', {
             chart: {
                 alignTicks: false
             },
 
             rangeSelector: {
-                selected: 1
+                inputDateFormat: '%e %b, %Y',
+                selected: 0,
+                enabled: true,
+                buttons: [
+                    {
+                        type: 'month',
+                        count: 1,
+                        text: '1 мес'
+                    },
+                    {
+                        type: 'month',
+                        count: 3,
+                        text: '3 мес'
+                    },
+                    {
+                        type: 'month',
+                        count: 6,
+                        text: '6 мес'
+                    },
+                    {
+                        type: 'ytd',
+                        text: 'С 1 янв'
+                    },
+                    {
+                        type: 'year',
+                        count: 1,
+                        text: '1 год'
+                    },
+                    {
+                        type: 'all',
+                        text: 'Все'
+                    }
+                ],
+                buttonSpacing: 4,
+                buttonTheme: {
+                    width: 50
+                }
             },
 
             plotOptions: {

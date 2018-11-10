@@ -98,6 +98,19 @@ main.hundlers = {
     },
     insertTabledata: function (data) {
         main.data.table = [];
+        // in future need delete
+        if(!data[0].isOnline) {
+            data.map((val,i) => {
+                if(i%2 == 0) {
+                    data[i].isOnlaine =true;
+                    return val;
+                }else{
+                    data[i].isOnlaine =false;
+                    return val;
+                }
+            })
+        }
+
         data.forEach(function (obj) {
             var init = [];
             var objkey = Object.keys(obj);
@@ -159,19 +172,20 @@ main.Table = {
         init: function (leftTempListData) {
             main.Table.dataTable.clean();
             main.Table.dataTable.dt = main.Table.object.DataTable({
-                "pagingType": 'simple_numbers',
+                "paging": false,
+                // "pagingType": 'simple_numbers',
                 "order": [],
-                "lengthMenu": [
-                    [15],
-                    [15]
-                ],
+                // "lengthMenu": [
+                //     [15],
+                //     [15]
+                // ],
                 // "select": true,
                 "responsive": true,
                 "data": leftTempListData,
                 "columnDefs": [{
                     'targets': 1,
+                    'searchable': true,
                     'orderable': false,
-                    'searchable': false,
                     'className': 'dt-body-center manual number',
                     'render': function (data, type, full, meta) {
                         return data;
@@ -180,7 +194,7 @@ main.Table = {
                     {
                         'targets': 2,
                         'orderable': false,
-                        'searchable': false,
+                        'searchable': true,
                         'className': 'dt-body-center manual adress',
                         'render': function (data, type, full, meta) {
                             return data;
@@ -195,6 +209,17 @@ main.Table = {
                             return data;
 
                         }
+                    },
+                    {
+                        'targets': 7,
+                        'orderable': false,
+                        'searchable': false,
+                        'className': 'dt-body-center',
+                        'render': function (data, type, full, meta) {
+                            const url = data ? '../img/wi-fi-green.png': '../img/wi-fi-red.png';
+                            return  `<img src=${url}/>`;
+
+                        },
                     }
                 ],
                 "columns": [
@@ -205,8 +230,9 @@ main.Table = {
                     {title: "Показания"},
                     {title: "Ошибка"},
                     {title: "Заряд батареи"},
+                     {title:"Связь"},
                 ],
-                "dom": "t<'clear'><'row'<'col-md-12'p>>",
+                "dom": "<'top'f>t<'clear'>",
             });
 
 

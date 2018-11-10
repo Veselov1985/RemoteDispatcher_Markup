@@ -21,6 +21,10 @@ body {
 .tableSection {
     margin-top: 20px;
 }
+.tableSection img {
+    width: 24px;
+    height: 24px;
+}
 
 #lines_dataTables_wrapper {
     height: 400px;
