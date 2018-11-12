@@ -3,7 +3,7 @@ main.debug = true;
 main.debugRoot = 'http://91.235.136.123:2525/';
 main.root = main.debug ? main.debugRoot : '';
 main.demo = true;
-main.mode = main.demo ? 'demo': 'data';
+main.mode = main.demo ? 'demo' : 'data';
 main.routes = {
     getdevice: main.root + `api/${main.mode}/getdevices`,
     getchartperiod: main.root + `api/${main.mode}/getchartperiod`, //  ->  {'DeviceId':'100001001'}
@@ -36,7 +36,7 @@ main.elements = {
 
 main.data = {
     // Глобальная настройка первая загрузка
-    firstInit:true,
+    firstInit: true,
     main: [],
     chartmain: [],
     chartChild: [],
@@ -89,13 +89,13 @@ main.helpfunc = {
 main.hundlers = {
     getDataDevice: function (data) {
         if (data.IsSuccess) {
-            main.data.main =main.hundlers.convertServerobject(data.Devices);
+            main.data.main = main.hundlers.convertServerobject(data.Devices);
             main.hundlers.initActions();
             // first init block
-            if(main.data.firstInit){
-                const id =main.data.main[0].Id;
+            if (main.data.firstInit) {
+                const id = main.data.main[0].Id;
                 main.Table.getDataMainChart(id);
-                main.Table.dataTable.dt.row(':eq(0)', { page: 'current' }).select();
+                main.Table.dataTable.dt.row(':eq(0)', {page: 'current'}).select();
                 main.hundlers.span.setMainSpan(id);
 
             }
@@ -120,7 +120,7 @@ main.hundlers = {
             main.data.table.push(init);
         });
     },
-    convertServerobject: function(arr){
+    convertServerobject: function (arr) {
         return arr.map(function (obj) {
             return {
                 Id: obj.Id,
@@ -147,19 +147,19 @@ main.hundlers = {
     },
     span: {
         setMainSpan: function (id) {
-          var resObj =  main.data.main.filter(function (val) {
-                return  val.Id.toString() == id;
+            var resObj = main.data.main.filter(function (val) {
+                return val.Id.toString() == id;
             })[0];
             main.hundlers.span.setTextSpan(main.elements.span.deviceInst.el, resObj.Id);
             main.hundlers.span.setTextSpan(main.elements.span.adressInst.el, resObj.Address);
-           main.hundlers.span.setTextSpan(main.elements.span.totalСonsumption.el, resObj.Indication.toString()+' м3')
+            main.hundlers.span.setTextSpan(main.elements.span.totalСonsumption.el, resObj.Indication.toString() + ' м3')
 
         },
         setChildSpan: function (total) {
-          // var totalChild = main.data.chartChild.reduce(function (sum,next) {
-          //     return sum + next[1];
-          // },0);
-            main.hundlers.span.setTextSpan(main.elements.span.dayConsumption.el, total.toString()+ ' м3');
+            // var totalChild = main.data.chartChild.reduce(function (sum,next) {
+            //     return sum + next[1];
+            // },0);
+            main.hundlers.span.setTextSpan(main.elements.span.dayConsumption.el, total.toString() + ' м3');
         },
         setTextSpan: function (el, text) {
             el.text(text);
@@ -167,8 +167,59 @@ main.hundlers = {
         cleanSpanText: function (el) {
             el.text('')
         }
-    }
+    },
+    addEventsTable: function (table) {
+        table.find('.btn_edit').on('click', function (e) {
+            e.stopPropagation();
+            main.hundlers.initEdit($(this));
+        });
 
+        table.find('#btn_save').on('click', function (e) {
+            e.stopPropagation();
+        });
+
+        table.find('#btn_cancel').on('click', function (e) {
+            e.stopPropagation();
+
+        });
+
+    },
+    initEdit: function (_that) {
+        // Блок проверки
+        var tr = main.Table.selected.closestTr(_that);
+        if (main.Table.selected.isSelectedTr(false, tr)) {
+
+            // показываем кнопки для редактирования
+            main.css.showEdit(tr);
+        }
+
+    },
+
+
+};
+
+main.css = {
+    showEdit: function (tr) {
+        main.css.ofDisplay(main.css.findGroup1(tr));
+        main.css.onDisplay(main.css.findGroup2(tr),true);
+    },
+    showInit: function (tr) {
+        main.css.onDisplay(main.css.findGroup1(tr));
+        main.css.ofDisplay(main.css.findGroup2(tr));
+    },
+    findGroup1: function (tr) {
+        return tr.find('.group-1')
+    },
+    findGroup2: function (tr) {
+        return tr.find('.group-2')
+    },
+
+    onDisplay: function (el,flex) {
+     flex ?  $(el).css({display: 'flex'}) :  $(el).css({display: 'block'});
+    },
+    ofDisplay: function (el) {
+        $(el).css({display: 'none'});
+    }
 };
 
 
@@ -191,8 +242,8 @@ main.Table = {
                 // "pagingType": 'simple_numbers',
                 "order": [],
                 "lengthMenu": [
-                    [5,10,50,-1],
-                    [5,10,50,'Все']
+                    [5, 10, 50, -1],
+                    [5, 10, 50, 'Все']
                 ],
                 // "select": true,
                 "responsive": true,
@@ -242,25 +293,44 @@ main.Table = {
                         'searchable': false,
                         'className': 'dt-body-center',
                         'render': function (data, type, full, meta) {
-                            const url = data ? './img/wi-fi-green.png': './img/wi-fi-red.png';
-                            return  `<img src=${url}>`;
+                            const url = data ? './img/wi-fi-green.png' : './img/wi-fi-red.png';
+                            return `<img src=${url}>`;
 
                         },
+                    },
+                    {
+                        'targets': 9,
+                        'orderable': false,
+                        'searchable': false,
+                        'className': 'dt-body-center',
+                        'render': function (data, type, full, meta) {
+                            return '<div class="group-1"> ' +
+                                '<button class="btn btn-primary btn_edit" >Редактировать</button> ' +
+                                '</div>' +
+                                '<div class="group-2" style="display: none">' +
+                                '<button class="btn btn-info btn-sm" id="btn_save" style="margin-right: 2px">Сохранить</button>' +
+                                '<button class="btn btn-danger btn-sm" id="btn_cancel">Отменить</button>' +
+                                '</div>'
+                        },
                     }
+
                 ],
                 "columns": [
                     {title: "ID"},
                     {title: "№ абонента"},
                     {title: "Адрес"},
-                    {title:"Начальное Значение"},
+                    {title: "Начальное Значение"},
                     {title: "Вес импульса"},
                     {title: "Показания"},
                     {title: "Ошибка"},
                     {title: "Заряд батареи"},
-                     {title:"Связь"},
+                    {title: "Связь"},
+                    {title: 'Редактировать'}
                 ],
                 "dom": "<'row top'<'col-md-6'l><'col-md-6'f>>t<'clear'><'row'<'col-md-12'p>>",
             });
+            main.hundlers.addEventsTable(main.Table.object);
+
 
             main.Table.object.on('click', 'td', function () {
                 var _this = $(this);
@@ -285,7 +355,9 @@ main.Table = {
                     main.Table.getDataMainChart(idDevice);
                 } else if (main.Table.ismanualTd(_this) && !main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual()) {
                     var inst = main.Table.manualInst(_this);
-                    if(!inst) {$spop.message.error('Произошла ошибка')}
+                    if (!inst) {
+                        $spop.message.error('Произошла ошибка')
+                    }
                     _this.empty();
                     _this.append(main.Table.inputHTML(inst));
                     main.Table.addfuncbtn();
@@ -298,7 +370,10 @@ main.Table = {
                     main.Table.getDataMainChart(idDevice);
                 } else if (main.Table.ismanualTd(_this) && !main.Table.hasOpenManual() && main.Table.selected.isSelectedTr(false, tr)) {
                     var inst = main.Table.manualInst(_this);
-                    if(!inst) {$spop.message.error('Произошла ошибка')};
+                    if (!inst) {
+                        $spop.message.error('Произошла ошибка')
+                    }
+                    ;
                     _this.empty();
                     _this.append(main.Table.inputHTML(inst));
                     main.Table.addfuncbtn();
@@ -342,9 +417,9 @@ main.Table = {
             chart.init.main(main.data.chartmain);
 
             // first init block - Child
-            if(main.data.firstInit) {
-                const value = main.data.chartmain[ main.data.chartmain.length-1][1];
-                const time =  main.data.chartmain[ main.data.chartmain.length-1][0];
+            if (main.data.firstInit) {
+                const value = main.data.chartmain[main.data.chartmain.length - 1][1];
+                const time = main.data.chartmain[main.data.chartmain.length - 1][0];
                 const _moment = moment(time).format('YYYY-MM-DD').split('-');
                 const param = {
                     'DeviceId': main.data.device,
@@ -374,7 +449,7 @@ main.Table = {
 
     },
     manualInst: function (el) {
-        return el.hasClass('number') ? [1, el.text()] : el.hasClass('adress') ? [2, el.text()] : el.hasClass('impuls') ? [4, el.text()] : el.hasClass('impstart') ?  [3, el.text()] : null;
+        return el.hasClass('number') ? [1, el.text()] : el.hasClass('adress') ? [2, el.text()] : el.hasClass('impuls') ? [4, el.text()] : el.hasClass('impstart') ? [3, el.text()] : null;
 
     },
 
@@ -389,8 +464,8 @@ main.Table = {
     },
     addfuncbtn: function () {
         var input = $('#manua_input');
-         // запрещаем всплытие события на инпуте и кнопках
-        input.on('click',function (e) {
+        // запрещаем всплытие события на инпуте и кнопках
+        input.on('click', function (e) {
             e.stopPropagation();
         });
         var len = input.val().length;
@@ -434,8 +509,8 @@ main.Table = {
             'DeviceId': `${result.Id}`,
             'Abonent': `${result.Abonent}`,
             'Address': `${result.Address}`,
-            'ImpWeight': main.demo ?`${result.ImpWeight}`.replace('.', ',') :  `${result.ImpWeight}`.replace(',', '.'),
-           'ImpStart' : main.demo ? `${result.ImpStart}`.replace('.', ',') :   `${result.ImpWeight}`.replace(',', '.'),
+            'ImpWeight': main.demo ? `${result.ImpWeight}`.replace('.', ',') : `${result.ImpWeight}`.replace(',', '.'),
+            'ImpStart': main.demo ? `${result.ImpStart}`.replace('.', ',') : `${result.ImpWeight}`.replace(',', '.'),
 
         }
 
