@@ -97,12 +97,10 @@ main.hundlers = {
                 main.Table.getDataMainChart(id);
                 main.Table.dataTable.dt.row(':eq(0)', {page: 'current'}).select();
                 main.hundlers.span.setMainSpan(id);
-
             }
-
         } else {
             console.log('Error get Data Device');
-
+            $spop.message.error('Ошибка в получении данных устройства.попробуйте повторить позже.')
         }
     },
     initActions: function () {
@@ -152,14 +150,14 @@ main.hundlers = {
             })[0];
             main.hundlers.span.setTextSpan(main.elements.span.deviceInst.el, resObj.Id);
             main.hundlers.span.setTextSpan(main.elements.span.adressInst.el, resObj.Address);
-            main.hundlers.span.setTextSpan(main.elements.span.totalСonsumption.el, resObj.Indication.toString() + ' м3')
+            main.hundlers.span.setTextSpan(main.elements.span.totalСonsumption.el, resObj.Indication.toFixed(2).toString() + ' м3')
 
         },
         setChildSpan: function (total) {
             // var totalChild = main.data.chartChild.reduce(function (sum,next) {
             //     return sum + next[1];
             // },0);
-            main.hundlers.span.setTextSpan(main.elements.span.dayConsumption.el, total.toString() + ' м3');
+            main.hundlers.span.setTextSpan(main.elements.span.dayConsumption.el, total.toFixed(2).toString() + ' м3');
         },
         setTextSpan: function (el, text) {
             el.text(text);
@@ -174,28 +172,100 @@ main.hundlers = {
             main.hundlers.initEdit($(this));
         });
 
-        table.find('#btn_save').on('click', function (e) {
+        table.find('.btn_save').on('click', function (e) {
             e.stopPropagation();
+            main.hundlers.saveEdit($(this));
         });
 
-        table.find('#btn_cancel').on('click', function (e) {
+        table.find('.btn_cancel').on('click', function (e) {
             e.stopPropagation();
-
+            main.hundlers.cancelEdit($(this));
         });
-
     },
     initEdit: function (_that) {
         // Блок проверки
         var tr = main.Table.selected.closestTr(_that);
+        // Устройство можно редактировать только  => данные устройства получены и данная строка selected
         if (main.Table.selected.isSelectedTr(false, tr)) {
-
             // показываем кнопки для редактирования
             main.css.showEdit(tr);
+            // инициализация полей для редактирования
+            main.hundlers.initEditField(tr);
+        } else {
+            $spop.message.warn('Для редактирования устройства его нужно сделать активным');
         }
-
     },
+    initEditField: function (tr) {
+        const arrfield = tr.find('.manual');
+        $.each(arrfield,(i,el) => {
+            const $elem =$(el);
+            const inst = main.Table.manualInst($elem);
+           const html =  main.Table.inputhtml(inst);
+            $elem.empty();
+            $elem.append(html);
+        });
+    },
+    cancelEdit: function (_that) {
+        const tr = main.Table.selected.closestTr(_that);
+        const inputField = tr.find('.manual-input');
+        $.each(inputField, (i, el) => {
+            const inp = $(el);
+            const inpprew = inp.data('prew');
+            var td = inp.closest('td');
+            td.empty();
+            td.text(inpprew);
+        });
+        main.css.showInit(tr);
+    },
+    saveEdit: function (_that) {
+        const tr = main.Table.selected.closestTr(_that);
+        const inputField = tr.find('.manual-input');
+        const id = main.Table.getIddecive($(inputField[0]));
+        if(!main.hundlers.validateinputField(inputField)) {return;}
+        $.each(inputField, (i,el) => {
+            const inp =$(el);
+            const newData = inp.val().trim();
+            const valInst = inp.data('inst');
+            const td = inp.closest('td');
+            td.empty();
+            td.text(newData);
+            main.Table.getsetdataRow(id, valInst, newData);
+        });
+        // TODO возможно нужно будет проверить все поля ли для редактирования заполнены чтоб понимать перезагружать график или нужно только обновить только данные девайса
+        main.hundlers.insertTabledata(main.data.main);
+        const data = main.data.main.filter(device => device.Id == +id)[0];
+        const param = {
+            'DeviceId': `${data.Id}`,
+            'Abonent': `${data.Abonent}`,
+            'Address': `${data.Address}`,
+            'ImpWeight': main.demo ? `${data.ImpWeight}`.replace('.', ',') : `${data.ImpWeight}`.replace(',', '.'),
+            'ImpStart': main.demo ? `${data.ImpStart}`.replace('.', ',') : `${data.ImpWeight}`.replace(',', '.'),
+        };
+        chart.Ajax.sendFileToProccess(main.routes.setdevicedata, param, main.Table.setNewDatasResponse);
+        main.css.showInit(tr);
+    },
+    // Валидация ввода данных пользователем
+    validateinputField:function (arrInp) {
+        let state = true;
+        $.each(arrInp,(i,inp) => {
+            const $inp =$(inp);
+            const inst = $inp.data('inst');
+            const  newValue = $inp.val().trim();
 
+          switch (inst) {
+              case 1: if( newValue == '') {$spop.message.warn('Поле номера абонента не может быть пустым'); state = false }
+                  break;
+              case 2: if( newValue == '') {$spop.message.warn('Поле Адресс не может быть пустым'); state = false}
+                  break;
+              case 3:  if( newValue == ''  || isNaN(newValue)) {$spop.message.warn('Поле Начальное значение не может быть пустым или не числом'); state = false}
+                  break;
+              case 4:  if( newValue == '' || isNaN(newValue)) {$spop.message.warn('Поле Вес импульса не может быть пустым или не числом'); state = false}
+                  break
+          }
 
+        });
+        return state;
+    }
 };
 
 main.css = {
@@ -221,7 +291,6 @@ main.css = {
         $(el).css({display: 'none'});
     }
 };
-
 
 main.Table = {
     object: {},
@@ -286,7 +355,6 @@ main.Table = {
 
                         }
                     },
-
                     {
                         'targets': 8,
                         'orderable': false,
@@ -305,15 +373,14 @@ main.Table = {
                         'className': 'dt-body-center',
                         'render': function (data, type, full, meta) {
                             return '<div class="group-1"> ' +
-                                '<button class="btn btn-primary btn_edit" >Редактировать</button> ' +
+                                '<button class="btn btn-primary btn_edit btn-sm" >Редактировать</button> ' +
                                 '</div>' +
                                 '<div class="group-2" style="display: none">' +
-                                '<button class="btn btn-info btn-sm" id="btn_save" style="margin-right: 2px">Сохранить</button>' +
-                                '<button class="btn btn-danger btn-sm" id="btn_cancel">Отменить</button>' +
+                                '<button class="btn btn-info btn-sm btn_save" style="margin-right: 2px">Сохранить</button>' +
+                                '<button class="btn btn-danger btn-sm btn_cancel" >Отменить</button>' +
                                 '</div>'
                         },
                     }
-
                 ],
                 "columns": [
                     {title: "ID"},
@@ -329,58 +396,33 @@ main.Table = {
                 ],
                 "dom": "<'row top'<'col-md-6'l><'col-md-6'f>>t<'clear'><'row'<'col-md-12'p>>",
             });
+            // вешаем события Редактирования , Сохранения и Отмены
             main.hundlers.addEventsTable(main.Table.object);
 
 
             main.Table.object.on('click', 'td', function () {
-                var _this = $(this);
-                var tr = main.Table.selected.closestTr(_this);
-                if (main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {
+                const _this = $(this);
+                const tr = main.Table.selected.closestTr(_this);
+                // клик по не активной строке и есть открытые окна редактироваания
+                if (!main.Table.selected.isSelectedTr(false, tr)  &&  main.Table.hasOpenManual() ) {
+                    $spop.message.warn('Сначало завершите редактирование выбраного устройства');
+                    return;
+                }
+                // клик по активной строке которая selected
+                if (main.Table.selected.isSelectedTr(false, tr) ) {
                     $spop.message.warn('Данные устройства отображены');
-                    return;
+                        return;
                 }
-                // if tr  selected and this no manual td
-                if (main.Table.selected.isSelectedTr(false, tr) && !main.Table.ismanualTd(_this)) {
-                    $spop.message.warn('Данные устройства отображены');
-                    return;
-                }
-                // if this no selected tr and no  open manual td
-                if (!main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual() && !main.Table.ismanualTd(_this)) {
-                    main.Table.selected.remove(false, main.Table.selected.findSelected(_this));
-                    main.Table.selected.set(_this);
-                    var idDevice = main.Table.getIdDecive(_this);
-                    main.hundlers.span.setMainSpan(idDevice);
-                    // clean child total consumption
-                    main.hundlers.span.cleanSpanText(main.elements.span.dayConsumption.el);
-                    main.Table.getDataMainChart(idDevice);
-                } else if (main.Table.ismanualTd(_this) && !main.Table.selected.isSelectedTr(false, tr) && !main.Table.hasOpenManual()) {
-                    var inst = main.Table.manualInst(_this);
-                    if (!inst) {
-                        $spop.message.error('Произошла ошибка')
-                    }
-                    _this.empty();
-                    _this.append(main.Table.inputHTML(inst));
-                    main.Table.addfuncbtn();
-                    main.Table.selected.remove(false, main.Table.selected.findSelected(_this));
-                    main.Table.selected.set(_this);
-                    var idDevice = main.Table.getIdDecive(_this);
-                    main.hundlers.span.setMainSpan(idDevice);
-                    // clean child total consumption
-                    main.hundlers.span.cleanSpanText(main.elements.span.dayConsumption.el);
-                    main.Table.getDataMainChart(idDevice);
-                } else if (main.Table.ismanualTd(_this) && !main.Table.hasOpenManual() && main.Table.selected.isSelectedTr(false, tr)) {
-                    var inst = main.Table.manualInst(_this);
-                    if (!inst) {
-                        $spop.message.error('Произошла ошибка')
-                    }
-                    ;
-                    _this.empty();
-                    _this.append(main.Table.inputHTML(inst));
-                    main.Table.addfuncbtn();
-                } else {
-                    $spop.message.warn('Закройте сначала поле для редактирования');
-                    return;
-                }
+                // Убираем selected  с  предыдушей строки
+                main.Table.selected.remove(false ,main.Table.selected.findSelected(tr));
+                // устанавливаем селект на выбраную строку
+                main.Table.selected.set(_this);
+                const idDevice = main.Table.getIdDecive(_this);
+                main.hundlers.span.setMainSpan(idDevice);
+                //clean child total consumption
+                main.hundlers.span.cleanSpanText(main.elements.span.dayConsumption.el);
+                // получаем данные основного графика
+                main.Table.getDataMainChart(idDevice);
             });
 
         }
@@ -439,56 +481,16 @@ main.Table = {
 
     },
     hasOpenManual: function () {
-        return $('#manua_input').length > 0;
-    },
-    inthisTrOpenInput: function (_this) {
-        return _this.closest('tr').find('input').length > 0;
-    },
-    ismanualTd: function (el) {
-        return el.hasClass('manual');
-
+        return $('.manual-input').length > 0;
     },
     manualInst: function (el) {
         return el.hasClass('number') ? [1, el.text()] : el.hasClass('adress') ? [2, el.text()] : el.hasClass('impuls') ? [4, el.text()] : el.hasClass('impstart') ? [3, el.text()] : null;
 
     },
-
-    inputHTML: function (data) {
-        return `<div class="input-group" style="z-index:10">
-        <input id="manua_input" type="text" data-prew="${data[1]}"  data-inst =${data[0]} value="${data[1]}" class="form-control"  aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button id='btn_ok' class="btn btn-secondary btn-sm" type="button"><i class="fa fa-check" aria-hidden="true"></i></button>
-          <button id='btn_cancel' class="btn btn-secondary btn-sm" type="button"><i class="fa fa-times" aria-hidden="true"></i></button>
-        </div>
-      </div>`;
-    },
-    addfuncbtn: function () {
-        var input = $('#manua_input');
-        // запрещаем всплытие события на инпуте и кнопках
-        input.on('click', function (e) {
-            e.stopPropagation();
-        });
-        var len = input.val().length;
-        input[0].focus();
-        input[0].setSelectionRange(len, len);
-        $('#btn_ok').on('click', function (e) {
-            e.stopPropagation();
-            main.Table.setNewDataTable();
-        });
-        $('#btn_cancel').on('click', function (e) {
-            e.stopPropagation();
-            main.helpfunc.closeInputInTable();
-        });
-    },
-    setNewDataTable: function () {
-        var inp = $('#manua_input');
-        var value = inp.val();
-        var valInst = inp.data('inst');
-        var id = main.Table.getIddecive(inp);
-        var data = main.Table.getsetdataRow(id, valInst, value);
-        main.hundlers.insertTabledata(main.data.main);
-        chart.Ajax.sendFileToProccess(main.routes.setdevicedata, data, main.Table.setNewDatasResponse);
-        main.Table.setTdmanualvalue(inp, valInst, value);
+    inputhtml:function(data) {
+    return  `<div class="input-group" style="z-index:10">
+            <input  type="text" data-prew="${data[1]}"  data-inst =${data[0]} value="${data[1]}" class="form-control manual-input"  aria-label="Recipient's username" aria-describedby="basic-addon2"  onclick="window.event.stopPropagation()">
+            <div>`
     },
     getIddecive: function (inp) {
         return inp.closest('tr').find('td:first').text();
@@ -515,12 +517,6 @@ main.Table = {
         }
 
     },
-    setTdmanualvalue: function (input, key, newvalue) {
-        var td = input.closest('tr').find('td')[key];
-        var $td = $(td);
-        $td.empty();
-        $td.text(newvalue);
-    },
     setNewDatasResponse: function (data) {
         if (data.IsSuccess) {
 
@@ -529,7 +525,6 @@ main.Table = {
         }
     }
 };
-
 
 $(function () {
     main.init.elements();

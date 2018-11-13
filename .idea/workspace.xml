@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2ba2ceda-bdd9-45a4-ba25-caf0d701ae50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -91,15 +91,16 @@
     <session id="-212521233">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -107,8 +108,8 @@
           <entry key="css" value="50" />
           <entry key="gitignore" value="21" />
           <entry key="html" value="290" />
-          <entry key="js" value="4821" />
-          <entry key="txt" value="143" />
+          <entry key="js" value="7474" />
+          <entry key="txt" value="167" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -116,8 +117,8 @@
           <entry key="CSS" value="50" />
           <entry key="Git file" value="21" />
           <entry key="HTML" value="309" />
-          <entry key="JavaScript" value="4802" />
-          <entry key="PLAIN_TEXT" value="143" />
+          <entry key="JavaScript" value="7455" />
+          <entry key="PLAIN_TEXT" value="167" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -143,7 +144,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
+            <state relative-caret-position="627">
               <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
               <folding>
                 <marker date="1542055654053" expanded="true" signature="3462:3514" ph="..." />
@@ -155,7 +156,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
+            <state relative-caret-position="4416">
               <caret line="192" column="63" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="63" />
             </state>
           </provider>
@@ -164,8 +165,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
+            <state relative-caret-position="-144">
+              <caret line="223" column="44" selection-start-line="223" selection-start-column="26" selection-end-line="223" selection-end-column="44" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#1;n#!!top" expanded="true" />
@@ -178,8 +179,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2691">
-              <caret line="117" selection-start-line="117" selection-end-line="117" />
+            <state relative-caret-position="230">
+              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -192,8 +193,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/spop-message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+            <state relative-caret-position="46">
+              <caret line="2" column="13" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -202,19 +203,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isetmainChartData</find>
-      <find>isetchildChartData</find>
-      <find>inser</find>
-      <find>getChildData</find>
-      <find>getChildDat</find>
-      <find>tbody</find>
       <find>mom</find>
       <find>getDataMainChart</find>
       <find>setMainSpan</find>
       <find>init</find>
       <find>impuls</find>
       <find>impstart</find>
-      <find>manualInst</find>
       <find>getDataDevice</find>
       <find>get</find>
       <find>ajax</find>
@@ -225,6 +219,20 @@
       <find>sendFileToProccess</find>
       <find>setChildSpan</find>
       <find>addEventsTable</find>
+      <find>inputHTML</find>
+      <find>manualInst</find>
+      <find>inputhtml</find>
+      <find>data</find>
+      <find>closeInputInTable</find>
+      <find>btn_cancel</find>
+      <find>inp.val()</find>
+      <find>insertTabledata</find>
+      <find>setNewDatasResponse</find>
+      <find>getIddecive</find>
+      <find>getsetdataRow</find>
+      <find>hasOpenManual</find>
+      <find>manual_input</find>
+      <find>manual-input</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -243,9 +251,9 @@
         <option value="$PROJECT_DIR$/css/preloader.css" />
         <option value="$PROJECT_DIR$/js/spop-message.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/js/chart.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/js/main.js" />
       </list>
     </option>
@@ -268,7 +276,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,6 +302,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -348,7 +356,8 @@
       <workItem from="1541931217724" duration="23000" />
       <workItem from="1541932711803" duration="12769000" />
       <workItem from="1542000180985" duration="24000" />
-      <workItem from="1542055456423" duration="4773000" />
+      <workItem from="1542055456423" duration="4868000" />
+      <workItem from="1542133207081" duration="12785000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1541258225997</created>
@@ -413,11 +422,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541945664750</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update 13.11.2018">
+      <created>1542060280420</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1542060280420</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52469000" />
+    <option name="totallyTimeSpent" value="65349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -455,7 +471,8 @@
     <MESSAGE value="update issue requirements" />
     <MESSAGE value="delete idea xml" />
     <MESSAGE value="update 11/11/2018" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 11/11/2018" />
+    <MESSAGE value="update 13.11.2018" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 13.11.2018" />
   </component>
   <component name="editorHistoryManager">
     <entry file="https://code.highcharts.com/stock/highstock.src.js">
@@ -524,26 +541,19 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/js/chart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2691">
-          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        <state relative-caret-position="4416">
+          <caret line="192" column="63" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/spop-message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
+        <state relative-caret-position="627">
           <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
           <folding>
             <marker date="1542055654053" expanded="true" signature="3462:3514" ph="..." />
@@ -551,17 +561,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/chart.js">
+    <entry file="file://$PROJECT_DIR$/js/spop-message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="192" column="63" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="63" />
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
+        <state relative-caret-position="-144">
+          <caret line="223" column="44" selection-start-line="223" selection-start-column="26" selection-end-line="223" selection-end-column="44" />
           <folding>
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#1;n#!!top" expanded="true" />
