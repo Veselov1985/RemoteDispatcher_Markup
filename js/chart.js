@@ -215,14 +215,14 @@ chart.init = {
 
 
 chart.Ajax = {
-    sendFileToProccess: function (url, data, success) {
+    sendFileToProccess: function (url, data, success,id) {
         $.ajax({
             url: url,
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data ? data : {}),
             success: function (data, textStatus, jqXHR) {
-                success(data);
+                success(data ,id);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 chart.hundlers.error(textStatus);

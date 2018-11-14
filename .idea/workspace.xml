@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ba2ceda-bdd9-45a4-ba25-caf0d701ae50" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/popper.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/spop-message.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/spop-message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jquery.dataTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jquery.dataTables.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -91,7 +96,7 @@
     <session id="-212521233">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
@@ -99,33 +104,33 @@
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="50" />
+          <entry key="css" value="127" />
           <entry key="gitignore" value="21" />
-          <entry key="html" value="290" />
-          <entry key="js" value="7474" />
-          <entry key="txt" value="167" />
+          <entry key="html" value="514" />
+          <entry key="js" value="8574" />
+          <entry key="txt" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="50" />
+          <entry key="CSS" value="127" />
           <entry key="Git file" value="21" />
-          <entry key="HTML" value="309" />
-          <entry key="JavaScript" value="7455" />
-          <entry key="PLAIN_TEXT" value="167" />
+          <entry key="HTML" value="533" />
+          <entry key="JavaScript" value="8555" />
+          <entry key="PLAIN_TEXT" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="2" />
           <entry key="gitignore" value="1" />
-          <entry key="js" value="3" />
+          <entry key="js" value="5" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
@@ -133,7 +138,7 @@
         <counts>
           <entry key="CSS" value="2" />
           <entry key="Git file" value="1" />
-          <entry key="JavaScript" value="3" />
+          <entry key="JavaScript" value="5" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -141,13 +146,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
+            <state relative-caret-position="535">
+              <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
               <folding>
-                <marker date="1542055654053" expanded="true" signature="3462:3514" ph="..." />
+                <marker date="1542229883460" expanded="true" signature="3668:3718" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/jquery.dataTables.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="142" column="367" selection-start-line="142" selection-start-column="367" selection-end-line="142" selection-end-column="367" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,17 +174,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4416">
-              <caret line="192" column="63" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="63" />
+            <state relative-caret-position="270">
+              <caret line="217" column="22" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-144">
-              <caret line="223" column="44" selection-start-line="223" selection-start-column="26" selection-end-line="223" selection-end-column="44" />
+            <state relative-caret-position="613">
+              <caret line="559" column="29" selection-start-line="559" selection-start-column="29" selection-end-line="559" selection-end-column="29" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#1;n#!!top" expanded="true" />
@@ -177,10 +195,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/popper.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+            <state relative-caret-position="184">
+              <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -193,8 +223,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/spop-message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="13" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="552">
+              <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -203,12 +233,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mom</find>
-      <find>getDataMainChart</find>
-      <find>setMainSpan</find>
-      <find>init</find>
-      <find>impuls</find>
-      <find>impstart</find>
       <find>getDataDevice</find>
       <find>get</find>
       <find>ajax</find>
@@ -216,7 +240,6 @@
       <find>click</find>
       <find>first</find>
       <find>addClass</find>
-      <find>sendFileToProccess</find>
       <find>setChildSpan</find>
       <find>addEventsTable</find>
       <find>inputHTML</find>
@@ -227,12 +250,19 @@
       <find>btn_cancel</find>
       <find>inp.val()</find>
       <find>insertTabledata</find>
-      <find>setNewDatasResponse</find>
       <find>getIddecive</find>
       <find>getsetdataRow</find>
       <find>hasOpenManual</find>
       <find>manual_input</find>
       <find>manual-input</find>
+      <find>sendFileToProccess</find>
+      <find>setNewDatasResponse</find>
+      <find>dt</find>
+      <find>getchartperiod</find>
+      <find>Show</find>
+      <find>Previous</find>
+      <find>schedule</find>
+      <find>getDataMainChart</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -244,17 +274,18 @@
         <option value="$PROJECT_DIR$/js/highcharts.js" />
         <option value="$PROJECT_DIR$/js/moment.js" />
         <option value="$PROJECT_DIR$/lib/jquery-3.2.1.js" />
-        <option value="$PROJECT_DIR$/lib/jquery.dataTables.js" />
         <option value="$PROJECT_DIR$/lib/resp.bootstrap4.js" />
         <option value="$PROJECT_DIR$/lib/dataTables.select.js" />
         <option value="$PROJECT_DIR$/lib/buttons.bootstrap4.js" />
         <option value="$PROJECT_DIR$/css/preloader.css" />
-        <option value="$PROJECT_DIR$/js/spop-message.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/js/chart.js" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/spop-message.js" />
+        <option value="$PROJECT_DIR$/lib/jquery.dataTables.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/lib/poper.min.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -276,6 +307,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -298,11 +330,15 @@
               <item name="RemoteDispatcher_Markup" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RemoteDispatcher_Markup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RemoteDispatcher_Markup" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -357,7 +393,8 @@
       <workItem from="1541932711803" duration="12769000" />
       <workItem from="1542000180985" duration="24000" />
       <workItem from="1542055456423" duration="4868000" />
-      <workItem from="1542133207081" duration="12785000" />
+      <workItem from="1542133207081" duration="13124000" />
+      <workItem from="1542220885922" duration="8865000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1541258225997</created>
@@ -429,11 +466,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542060280420</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update 14/11/2018">
+      <created>1542146539307</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1542146539308</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65349000" />
+    <option name="totallyTimeSpent" value="74553000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -472,7 +516,8 @@
     <MESSAGE value="delete idea xml" />
     <MESSAGE value="update 11/11/2018" />
     <MESSAGE value="update 13.11.2018" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 13.11.2018" />
+    <MESSAGE value="update 14/11/2018" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 14/11/2018" />
   </component>
   <component name="editorHistoryManager">
     <entry file="https://code.highcharts.com/stock/highstock.src.js">
@@ -492,13 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="332" selection-start-line="5" selection-start-column="332" selection-end-line="5" selection-end-column="332" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/jquery.dataTables.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="163" column="393" selection-start-line="163" selection-start-column="393" selection-end-line="163" selection-end-column="393" />
         </state>
       </provider>
     </entry>
@@ -541,48 +579,69 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4416">
-          <caret line="192" column="63" selection-start-line="192" selection-start-column="51" selection-end-line="192" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/chart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
-          <folding>
-            <marker date="1542055654053" expanded="true" signature="3462:3514" ph="..." />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="217" column="22" selection-start-line="217" selection-start-column="4" selection-end-line="217" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/spop-message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="13" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="552">
+          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/jquery.dataTables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="142" column="367" selection-start-line="142" selection-start-column="367" selection-end-line="142" selection-end-column="367" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        <state relative-caret-position="184">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="223" column="44" selection-start-line="223" selection-start-column="26" selection-end-line="223" selection-end-column="44" />
+        <state relative-caret-position="613">
+          <caret line="559" column="29" selection-start-line="559" selection-start-column="29" selection-end-line="559" selection-end-column="29" />
           <folding>
             <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/popper.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+          <folding>
+            <marker date="1542229883460" expanded="true" signature="3668:3718" ph="..." />
           </folding>
         </state>
       </provider>

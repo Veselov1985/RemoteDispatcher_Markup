@@ -1,10 +1,22 @@
 body {
     text-align: center;
+    background-color: #f5f7fa;
+    font-family: "SansSerif" !important;
+    color: #3f3f3f !important;
+}
+
+.headerSection {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    background-color:#cccccc;
 }
 
 .mainTitle {
     text-align: center;
-    margin: 20px 0;
+   height: 50px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
+    background-color:#cccccc;
 }
 
 .scheduleBox p {
@@ -14,7 +26,7 @@ body {
 }
 
 .schedule {
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     min-height: 300px;
 }
 
@@ -106,7 +118,7 @@ select{
     font-size: 75%;
     display: inline-block;
     width: 100%;
-    padding: .375rem 1.75rem .375rem .75rem;
+    padding: .375rem 0.75rem .375rem .75rem;
     line-height: 1.5;
     color: #495057;
     vertical-align: middle;

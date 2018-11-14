@@ -241,7 +241,7 @@ main.hundlers = {
             'ImpWeight': main.demo ? `${data.ImpWeight}`.replace('.', ',') : `${data.ImpWeight}`.replace(',', '.'),
             'ImpStart': main.demo ? `${data.ImpStart}`.replace('.', ',') : `${data.ImpWeight}`.replace(',', '.'),
         };
-        chart.Ajax.sendFileToProccess(main.routes.setdevicedata, param, main.Table.setNewDatasResponse);
+        chart.Ajax.sendFileToProccess(main.routes.setdevicedata, param, main.Table.setNewDatasResponse, id);
         main.css.showInit(tr);
     },
     // Валидация ввода данных пользователем
@@ -353,7 +353,7 @@ main.Table = {
                         'render': function (data, type, full, meta) {
                             return data;
 
-                        }
+                        },
                     },
                     {
                         'targets': 8,
@@ -517,11 +517,39 @@ main.Table = {
         }
 
     },
-    setNewDatasResponse: function (data) {
+    setNewDatasResponse: function (data, id) {
         if (data.IsSuccess) {
+            main.Table.getUpdateDatadevice(id);
 
         } else {
             console.log('error save change device');
+            $spop.message.error('Ошибка при Сохранении параметров устройства')
+        }
+    },
+     getUpdateDatadevice: function (id) {
+         chart.Ajax.sendFileToProccess(main.routes.getdevice, null, main.Table.getUpdateResponse, id);
+     },
+    getUpdateResponse:function (data, id) {
+        if (data.IsSuccess) {
+           const base = main.hundlers.convertServerobject(data.Devices);
+           // Обновляем данные в активной строке
+            const filteredDevice = base.filter(dev => dev.Id == id)[0];
+            const tr = main.Table.object.find('tr');
+            let _tr;
+            $.each(tr,(i, elem) => {
+              let td = $(elem).find('td:first')[0];
+              td = $(td);
+              if(td.text() == id) {
+                  _tr = td.closest('tr');
+              }
+            });
+            let elemUpdate = _tr.find('td')[5];
+               $(elemUpdate).text(filteredDevice.Indication);
+            // Обновляем график лавный график
+            main.Table.getDataMainChart(id);
+
+        } else {
+            $spop.message.error('Не удалось обновить данные Устройства');
         }
     }
 };
@@ -529,5 +557,6 @@ main.Table = {
 $(function () {
     main.init.elements();
     chart.Ajax.sendFileToProccess(main.routes.getdevice, null, main.hundlers.getDataDevice);
-
+    // Инициализация тултипов
+    $('[data-toggle="tooltip"]').tooltip();
 });
