@@ -8,15 +8,24 @@ body {
 .headerSection {
     margin-bottom: 20px;
     border-bottom: 1px solid #ccc;
-    background-color:#cccccc;
+    background-color: #cccccc;
+}
+
+.pull-right {
+    float: right;
+    margin-right: 21%
+}
+
+.text-left {
+    text-align: left
 }
 
 .mainTitle {
     text-align: center;
-   height: 50px;
+    height: 50px;
     margin-bottom: 20px;
     border-bottom: 1px solid #cccccc;
-    background-color:#cccccc;
+    background-color: #cccccc;
 }
 
 .scheduleBox p {
@@ -33,13 +42,14 @@ body {
 .tableSection {
     margin-top: 20px;
 }
+
 .tableSection img {
     width: 24px;
     height: 24px;
 }
 
 #lines_dataTables_wrapper {
-   min-height:  400px;
+    min-height: 400px;
 }
 
 .container-fluid {
@@ -62,9 +72,6 @@ body {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #ccc;
 }
-
-
-
 
 .dataTables_paginate {
     display: flex;
@@ -100,20 +107,18 @@ table.dataTable {
     bottom: 10px;
 }
 
-
 table.dataTable tbody th,
 table.dataTable tbody td {
     padding: 3px 10px !important;
     cursor: pointer !important;
 }
 
-
 div.dataTables_wrapper div.dataTables_length select {
     width: 75px;
     display: inline-block;
 }
 
-select{
+select {
     height: calc(1.8125rem + 2px);
     font-size: 75%;
     display: inline-block;
@@ -125,17 +130,17 @@ select{
     background-size: 8px 10px;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    }
-div.dataTables_wrapper div.dataTables_filter input {
+}
 
-height: calc(2.25rem + 2px);
-padding: .375rem .75rem;
-font-size: 1rem;
-line-height: 1.5;
-color: #495057;
-background-color: #fff;
-background-clip: padding-box;
-border: 1px solid #ced4da;
-border-radius: .25rem;
-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+div.dataTables_wrapper div.dataTables_filter input {
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
