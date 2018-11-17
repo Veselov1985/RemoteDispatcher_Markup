@@ -147,14 +147,16 @@ main.hundlers = {
         })
     },
     isetmainChartData: function(data) {
-        return data.map(function(obj) {
+        let arrData = data.map(function(obj) {
             return [moment.parseZone(obj.Date).valueOf(), obj.Value];
         });
+        return arrData.sort((a, b) => a[0] - b[0]);
     },
     isetchildChartData(data) {
-        return data.map(function(obj) {
+        let arrData = data.map(function(obj) {
             return [moment.parseZone(obj.Time).valueOf(), obj.Value];
         });
+        return arrData.sort((a, b) => a[0] - b[0]);
     },
     span: {
         setMainSpan: function(id) {
@@ -415,11 +417,11 @@ main.Table = {
                     { title: "ID" },
                     { title: "№ абонента" },
                     { title: "Адрес" },
-                    { title: "Первичные показания" },
+                    { title: "Первичные показания, м3" },
                     { title: "Вес импульса" },
-                    { title: "Показания" },
+                    { title: "Показания, м3" },
                     { title: "Ошибка" },
-                    { title: "Заряд батареи" },
+                    { title: "Заряд батареи, В" },
                     { title: "Связь" },
                     { title: 'Редактировать' }
                 ],
