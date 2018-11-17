@@ -189,6 +189,10 @@ div.dataTables_wrapper div.dataTables_filter input {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+.group-1 {
+    margin-top: 5%;
+}
+
 .imgbox {
     display: flex;
     justify-content: center;
