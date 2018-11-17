@@ -69,9 +69,9 @@ chart.hundlers = {
         }
 
     },
-    getChildData: function(y) {
-        var data = main.data.chartmain.filter((arr) => arr[1] === y)[0][0];
-        var _moment = moment(data).format('YYYY-MM-DD').split('-'); //getChildData
+    getChildData: function(x) {
+        // x => кол-во милесекунд (Дата по которой нужно плучить Child chart)
+        var _moment = moment.utc(x).format('YYYY-MM-DD').split('-'); //getChildData
         var param = {
             'DeviceId': main.data.device,
             'Year': _moment[0],
@@ -223,7 +223,7 @@ chart.init = {
                     point: {
                         events: {
                             click: function() {
-                                chart.hundlers.getChildData(this.y);
+                                chart.hundlers.getChildData(this.x);
                                 main.hundlers.span.setChildSpan(this.y)
                             }
                         }

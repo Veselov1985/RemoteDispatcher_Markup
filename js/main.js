@@ -2,7 +2,7 @@ var main = {};
 main.debug = true;
 main.debugRoot = 'http://91.235.136.123:2525/';
 main.root = main.debug ? main.debugRoot : '';
-main.demo = true;
+main.demo = false;
 main.mode = main.demo ? 'demo' : 'data';
 main.routes = {
     getdevice: main.root + `api/${main.mode}/getdevices`,
@@ -491,7 +491,7 @@ main.Table = {
             if (main.data.firstInit) {
                 const value = main.data.chartmain[main.data.chartmain.length - 1][1];
                 const time = main.data.chartmain[main.data.chartmain.length - 1][0];
-                const _moment = moment(time).format('YYYY-MM-DD').split('-');
+                const _moment = moment.parseZone(time).format('YYYY-MM-DD').split('-');
                 const param = {
                     'DeviceId': main.data.device,
                     'Year': _moment[0],
@@ -588,4 +588,4 @@ $(function() {
     chart.Ajax.sendFileToProccess(main.routes.getdevice, null, main.hundlers.getDataDevice);
     // Инициализация тултипов
     $('[data-toggle="tooltip"]').tooltip();
-});
+})
