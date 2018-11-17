@@ -29,32 +29,45 @@
         <div class="loader-section section-right"></div>
     </div>
     <!-- Preloader End -->
-
-
     <section class="headerSection">
-        <div class="row">
-            <div class="col-md"></div>
+        <div class="header-row">
+            <div class="col-md">
+                <div class="pull-left">
+                    <h6 class="text-left">КП "Городской Водоканал"</h6>
+                    <h6 class="text-left">г.Тестовый Харьковская обл. </h6>
+                </div>
+            </div>
             <div class="col-md">
                 <div class="pull-right">
-                    <h4 class="text-left">Счетчик №<span id="deviceInst"></span></h4>
-                    <h4 class="text-left"> Адресс: <span id="adressInst"></span></h4>
+                    <h6 class="text-left">Счетчик №<span id="deviceInst"></span></h6>
+                    <h6 class="text-left"> Адресс: <span id="adressInst"></span></h6>
                 </div>
             </div>
         </div>
     </section>
     <section class="scheduleSection">
-        <!--<h1 class="mainTitle">Счетчик <span id="deviceInst"></span> - <span id="adressInst"></span></h1>-->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md">
-                    <h3 class="subTitle">Общее потребление <span id="totalСonsumption" data-toggle="tooltip" data-placement="top" title="Потребление за весь период"></span></h3>
+                <div class="col-md-6">
+                    <div class="subTitle">
+                        <div class="date-block">
+                            <span id="fromTime" class="small-span"></span>
+                            <span id="toTime" class="small-span"></span>
+                        </div>
+                        <h3>Общее потребление <span id="totalСonsumption" data-toggle="tooltip" data-placement="top" title="Потребление за весь период"></span></h3>
+                    </div>
                     <div class="scheduleBox">
                         <p>График потребления за весь период</p>
                         <div id="chartMain" class="schedule"></div>
                     </div>
                 </div>
-                <div class="col-md">
-                    <h3 class="subTitle">Суточные показания <span id="dayConsumption" data-toggle="tooltip" data-placement="top" title="Потребление за один день"></span></h3>
+                <div class="col-md-6">
+                    <div class="subTitle">
+                        <div class="date-block">
+                            <span id="childTime" class="small-span"></span>
+                        </div>
+                        <h3>Суточные показания <span id="dayConsumption" data-toggle="tooltip" data-placement="top" title="Потребление за один день"></span></h3>
+                    </div>
                     <div class="scheduleBox">
                         <p>График потребления за сутки</p>
                         <div id='chartChild' class="schedule"></div>
@@ -67,6 +80,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg">
+                    <!-- <div class="img-content">
+                        <div class="fltr img-filter"></div>
+                        <div class="clrfltr img-filter"></div>
+                        <div class="report img-filter"></div>
+                    </div> -->
                     <table cellpadding="0" cellspacing="0" border="0" width="100%" class="display table table-bordered" id="lines_dataTables">
                         <thead>
                             <tr>

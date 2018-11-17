@@ -13,8 +13,7 @@ chart.lang = {
         inputDateFormat: '%e %b, %Y',
         selected: 1,
         enabled: true,
-        buttons: [
-            {
+        buttons: [{
                 type: 'month',
                 count: 1,
                 text: '1 мес'
@@ -58,19 +57,19 @@ chart.data = {
 chart.helpfunc = {};
 
 chart.hundlers = {
-    error: function (err) {
+    error: function(err) {
         console.log(err);
         $spop.message.error(err);
     },
-    getDataDevice: function (data) {
-        if(data.IsSuccess){
+    getDataDevice: function(data) {
+        if (data.IsSuccess) {
             $spop.message.success('Данные устройства обновлены');
-        }else {
+        } else {
             $spop.message.error('Даные устройства не обновлены');
         }
 
     },
-    getChildData: function (y) {
+    getChildData: function(y) {
         var data = main.data.chartmain.filter((arr) => arr[1] === y)[0][0];
         var _moment = moment(data).format('YYYY-MM-DD').split('-'); //getChildData
         var param = {
@@ -82,35 +81,52 @@ chart.hundlers = {
 
         chart.Ajax.sendFileToProccess(main.routes.getchartday, param, chart.hundlers.setChildData);
     },
-    setChildData: function (data) {
+    setChildData: function(data) {
         // Обработка данных Child графика
         if (data.IsSuccess) {
-            main.data.firstInit =false;
+            main.data.firstInit = false;
             var dataChart = data.ChartDay.ChartHours;
             main.data.chartChild = main.hundlers.isetchildChartData(dataChart);
             // TODO возможно отображать расход за день нужно после получения данных с бэка (сейчас эти данные мы берем по клику на главном графике)
             // main.hundlers.span.setChildSpan();
-             chart.init.child();
+            chart.init.child();
         } else {
             console.log('error get childChart Data');
         }
 
+    },
+    setTime: (from, to) => {
+        main.elements.span.toTime.el.text(from);
+        main.elements.span.fromTime.el.text(to);
+    },
+    setChildtime: (time) => {
+        main.elements.span.childTime.el.text(time);
     }
 };
 
 chart.init = {
-    child: function () {
+    child: function() {
         $('#chartChild').empty();
         Highcharts.setOptions({
-            lang:chart.lang.options,
+            lang: chart.lang.options,
         });
         Highcharts.stockChart('chartChild', {
 
             chart: {
-                alignTicks: false
+                alignTicks: false,
+                events: {
+                    load: () => {
+                        const content = $('#chartChild .highcharts-range-selector-group');
+                        let alltime = content.find('.highcharts-range-input').find('tspan')[0];
+                        alltime = $(alltime).text();
+                        chart.hundlers.setChildtime(alltime);
+                        content.remove();
+
+                    }
+                }
             },
             rangeSelector: {
-                enabled: false,
+                enabled: true,
             },
             plotOptions: {
                 series: {
@@ -124,15 +140,14 @@ chart.init = {
                 dataGrouping: {
                     units: [
                         [
-                            'day',
-                            [1]
+                            'day', [1]
                         ],
                     ]
                 }
             }]
         });
     },
-    main: function () {
+    main: function() {
         $('#chartMain').empty();
         $('#chartChild').empty();
         Highcharts.setOptions({
@@ -140,15 +155,34 @@ chart.init = {
         });
         Highcharts.stockChart('chartMain', {
             chart: {
-                alignTicks: false
+                alignTicks: false,
+                events: {
+                    load: function(e) {
+                        let fromTime = $('#chartMain .highcharts-range-input').find('tspan')[0];
+                        fromTime = $(fromTime).text();
+                        let toTime = $('#chartMain .highcharts-range-input').find('tspan')[1];
+                        toTime = $(toTime).text();
+                        chart.hundlers.setTime(toTime, fromTime);
+                    }
+                }
+            },
+            xAxis: {
+                events: {
+                    setExtremes: function(e) {
+                        let fromTime = $('#chartMain .highcharts-range-input').find('tspan')[0];
+                        fromTime = $(fromTime).text();
+                        let toTime = $('#chartMain .highcharts-range-input').find('tspan')[1];
+                        toTime = $(toTime).text();
+                        chart.hundlers.setTime(toTime, fromTime);
+                    }
+                }
             },
 
             rangeSelector: {
                 inputDateFormat: '%e %b, %Y',
                 selected: 0,
                 enabled: true,
-                buttons: [
-                    {
+                buttons: [{
                         type: 'month',
                         count: 1,
                         text: '1 мес'
@@ -188,7 +222,7 @@ chart.init = {
                     cursor: 'pointer',
                     point: {
                         events: {
-                            click: function () {
+                            click: function() {
                                 chart.hundlers.getChildData(this.y);
                                 main.hundlers.span.setChildSpan(this.y)
                             }
@@ -203,8 +237,7 @@ chart.init = {
                 dataGrouping: {
                     units: [
                         [
-                            'day',
-                            [1]
+                            'day', [1]
                         ],
                     ]
                 }
@@ -215,25 +248,24 @@ chart.init = {
 
 
 chart.Ajax = {
-    sendFileToProccess: function (url, data, success,id) {
+    sendFileToProccess: function(url, data, success, id) {
         $.ajax({
             url: url,
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data ? data : {}),
-            success: function (data, textStatus, jqXHR) {
-                success(data ,id);
+            success: function(data, textStatus, jqXHR) {
+                success(data, id);
             },
-            error: function (jqXHR, textStatus, errorThrown) {
+            error: function(jqXHR, textStatus, errorThrown) {
                 chart.hundlers.error(textStatus);
             },
-            beforeSend: function () {
+            beforeSend: function() {
                 main.helpfunc.preloader.show();
             },
-            complete: function () {
+            complete: function() {
                 main.helpfunc.preloader.hidden();
             }
         });
     },
 };
-
