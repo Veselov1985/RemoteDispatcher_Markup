@@ -488,7 +488,7 @@ main.Table = {
             chart.init.main(main.data.chartmain);
 
             // first init block - Child
-            if (main.data.firstInit) {
+            if (main.data.firstInit && main.data.chartmain.length > 0) {
                 const value = main.data.chartmain[main.data.chartmain.length - 1][1];
                 const time = main.data.chartmain[main.data.chartmain.length - 1][0];
                 const _moment = moment.parseZone(time).format('YYYY-MM-DD').split('-');
@@ -588,4 +588,4 @@ $(function() {
     chart.Ajax.sendFileToProccess(main.routes.getdevice, null, main.hundlers.getDataDevice);
     // Инициализация тултипов
     $('[data-toggle="tooltip"]').tooltip();
-})
+});
