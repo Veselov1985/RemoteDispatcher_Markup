@@ -116,6 +116,7 @@ chart.init = {
                 alignTicks: false,
                 events: {
                     load: () => {
+                        $('.highcharts-credits').remove();
                         const content = $('#chartChild .highcharts-range-selector-group');
                         let alltime = content.find('.highcharts-range-input').find('tspan')[0];
                         alltime = $(alltime).text();
@@ -158,6 +159,7 @@ chart.init = {
                 alignTicks: false,
                 events: {
                     load: function(e) {
+                        $('.highcharts-credits').remove();
                         let fromTime = $('#chartMain .highcharts-range-input').find('tspan')[0];
                         fromTime = $(fromTime).text();
                         let toTime = $('#chartMain .highcharts-range-input').find('tspan')[1];

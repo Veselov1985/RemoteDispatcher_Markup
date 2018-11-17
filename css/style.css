@@ -142,27 +142,27 @@ h4 {
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    border-color: #aae3f4 !important;
-    background-color: #aae3f4 !important;
+    border-color: #acbad4 !important;
+    background-color: #acbad4 !important;
     margin: 0 !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #aae3f4), color-stop(100%, #aae3f4));
-    background: -webkit-linear-gradient(top, #aae3f4 0%, #aae3f4 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #acbad4), color-stop(100%, #acbad4));
+    background: -webkit-linear-gradient(top, #acbad4 0%, #acbad4 100%);
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    border-color: #aae3f4 !important;
-    background-color: #aae3f4 !important;
+    border-color: #acbad4 !important;
+    background-color: #acbad4 !important;
     margin: 0 !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #aae3f4), color-stop(100%, #aae3f4));
-    background: -webkit-linear-gradient(top, #aae3f4 0%, #aae3f4 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #acbad4), color-stop(100%, #acbad4));
+    background: -webkit-linear-gradient(top, #acbad4 0%, #acbad4 100%);
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:active {
-    border-color: #aae3f4 !important;
-    background-color: #aae3f4 !important;
+    border-color: #acbad4 !important;
+    background-color: #acbad4 !important;
     margin: 0 !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #aae3f4), color-stop(100%, #aae3f4));
-    background: -webkit-linear-gradient(top, #aae3f4 0%, #aae3f4 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #acbad4), color-stop(100%, #acbad4));
+    background: -webkit-linear-gradient(top, #acbad4 0%, #acbad4 100%);
 }
 
 .dataTables_wrapper .dataTables_paginate .next {
@@ -171,10 +171,10 @@ h4 {
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     color: #106983 !important;
-    background-color: #aae3f4 !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #aae3f4), color-stop(100%, #aae3f4));
-    background: -webkit-linear-gradient(top, #aae3f4 0%, #aae3f4 100%);
-    border-color: #aae3f4 !important;
+    background-color: #acbad4 !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #acbad4), color-stop(100%, #acbad4));
+    background: -webkit-linear-gradient(top, #acbad4 0%, #acbad4 100%);
+    border-color: #acbad4 !important;
 }
 
 .paging_simple_numbers {
@@ -271,6 +271,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 .btn-primary {
     background: rgb(124, 181, 236);
+    border-color: transparent;
 }
 
 .fltr {
@@ -288,6 +289,19 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 .report {
     background: url('./../img/report.png') 0 0 /cover no-repeat;
+}
+
+table.dataTable.display tbody>tr.odd.selected>.sorting_1,
+table.dataTable.order-column.stripe tbody>tr.odd.selected>.sorting_1 {
+    background-color: #d1daed !important;
+}
+
+.sorting_1 {
+    background-color: #d1daed !important;
+}
+
+.table-bordered {
+    border: 1px solid #cccccc !important;
 }
 
 @media screen and (max-width: 660px) {
