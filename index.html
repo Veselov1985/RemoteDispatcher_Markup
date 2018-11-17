@@ -31,17 +31,17 @@
     </div>
     <!-- Preloader End -->
     <section class="headerSection">
-        <div class="header-row">
-            <div class="col-md-6">
-                <div class="pull-left">
-                    <h5 class="text-left">КП "Городской Водоканал"</h5>
-                    <h6 class="text-left">г.Тестовый Харьковская обл. </h6>
+        <div class="header-row row">
+            <div class="col-md-6 flex-center">
+                <div class="">
+                    <h5 class="text-center">КП "Городской Водоканал"</h5>
+                    <h6 class="text-center">г.Тестовый Харьковская обл. </h6>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="pull-right">
-                    <h5 class="text-left">Счетчик №<span id="deviceInst"></span></h5>
-                    <h6 class="text-left"> Адресс: <span id="adressInst"></span></h6>
+            <div class="col-md-6 flex-center">
+                <div class="">
+                    <h5 class="text-center">Счетчик №<span id="deviceInst"></span></h5>
+                    <h6 class="text-center"> Адресс: <span id="adressInst"></span></h6>
                 </div>
             </div>
         </div>
@@ -50,12 +50,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="subTitle">
-                        <div class="date-block">
-                            <span id="fromTime" class="small-span"></span>
-                            <span id="toTime" class="small-span"></span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="date-block">
+                                <span class="calendar"></span>
+                                <span id="fromTime" class="small-span"></span>
+                                <span id="toTime" class="small-span"></span>
+                            </div>
                         </div>
-                        <h4>Общее потребление <span id="totalСonsumption" data-toggle="tooltip" data-placement="top" title="Потребление за весь период"></span></h4>
+                        <div class="col-md-12 text-center">
+                            <h4>Общее потребление <span id="totalСonsumption" data-toggle="tooltip" data-placement="top" title="Потребление за весь период"></span></h4>
+                        </div>
                     </div>
                     <div class="scheduleBox">
                         <p>График потребления за весь период</p>
@@ -63,11 +68,16 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="subTitle">
-                        <div class="date-block">
-                            <span id="childTime" class="small-span"></span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="date-block">
+                                <span class="calendar"></span>
+                                <span id="childTime" class="small-span"></span>
+                            </div>
                         </div>
-                        <h4>Суточные показания <span id="dayConsumption" data-toggle="tooltip" data-placement="top" title="Потребление за один день"></span></h4>
+                        <div class="col-md-12 text-center">
+                            <h4>Общее потребление <span id="dayConsumption" data-toggle="tooltip" data-placement="top" title="Потребление за один день"></span></h4>
+                        </div>
                     </div>
                     <div class="scheduleBox">
                         <p>График потребления за сутки</p>
@@ -81,11 +91,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg">
-                    <!-- <div class="img-content">
-                        <div class="fltr img-filter"></div>
-                        <div class="clrfltr img-filter"></div>
-                        <div class="report img-filter"></div>
-                    </div> -->
                     <table cellpadding="0" cellspacing="0" border="0" width="100%" class="responsive display table table-bordered" id="lines_dataTables">
                         <thead>
                             <tr>
