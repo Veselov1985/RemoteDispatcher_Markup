@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ba2ceda-bdd9-45a4-ba25-caf0d701ae50" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/popper.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/spop-message.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/spop-message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jquery.dataTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jquery.dataTables.js" afterDir="false" />
-    </list>
+    <list default="true" id="2ba2ceda-bdd9-45a4-ba25-caf0d701ae50" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -96,7 +87,7 @@
     <session id="-212521233">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
@@ -114,7 +105,7 @@
           <entry key="gitignore" value="21" />
           <entry key="html" value="514" />
           <entry key="js" value="8574" />
-          <entry key="txt" value="186" />
+          <entry key="txt" value="188" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -123,7 +114,7 @@
           <entry key="Git file" value="21" />
           <entry key="HTML" value="533" />
           <entry key="JavaScript" value="8555" />
-          <entry key="PLAIN_TEXT" value="186" />
+          <entry key="PLAIN_TEXT" value="188" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -149,7 +140,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
+            <state relative-caret-position="33">
               <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
               <folding>
                 <marker date="1542229883460" expanded="true" signature="3668:3718" ph="..." />
@@ -394,7 +385,7 @@
       <workItem from="1542000180985" duration="24000" />
       <workItem from="1542055456423" duration="4868000" />
       <workItem from="1542133207081" duration="13124000" />
-      <workItem from="1542220885922" duration="8865000" />
+      <workItem from="1542220885922" duration="9314000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1541258225997</created>
@@ -473,20 +464,26 @@
       <option name="project" value="LOCAL" />
       <updated>1542146539308</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update 15/11/2018">
+      <created>1542230020407</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1542230020407</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74553000" />
+    <option name="totallyTimeSpent" value="75002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.12802951" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.12802951" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49841937" weight="0.32819384" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49841937" visible="true" weight="0.32819384" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5015806" side_tool="true" weight="0.32819384" />
       <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -517,7 +514,8 @@
     <MESSAGE value="update 11/11/2018" />
     <MESSAGE value="update 13.11.2018" />
     <MESSAGE value="update 14/11/2018" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 14/11/2018" />
+    <MESSAGE value="update 15/11/2018" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 15/11/2018" />
   </component>
   <component name="editorHistoryManager">
     <entry file="https://code.highcharts.com/stock/highstock.src.js">
@@ -638,7 +636,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
+        <state relative-caret-position="33">
           <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
           <folding>
             <marker date="1542229883460" expanded="true" signature="3668:3718" ph="..." />
