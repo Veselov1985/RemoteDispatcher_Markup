@@ -119,6 +119,12 @@ main.hundlers = {
     initActions: function() {
         main.hundlers.insertTabledata(main.data.main);
         main.Table.dataTable.init(main.data.table);
+
+        // при переключении страниц (пагинации) навешиваем обработчики
+        main.Table.dataTable.dt.on('draw.dt', function(e, settings, len) {
+            main.hundlers.addEventsTable(main.Table.object);
+        });
+
     },
     insertTabledata: function(data) {
         main.data.table = [];
@@ -271,27 +277,27 @@ main.hundlers = {
                 case 1:
                     if (newValue == '') {
                         $spop.message.warn('Поле номера абонента не может быть пустым');
-                        state = false
+                        state = false;
                     }
                     break;
                 case 2:
                     if (newValue == '') {
                         $spop.message.warn('Поле Адресс не может быть пустым');
-                        state = false
+                        state = false;
                     }
                     break;
                 case 3:
                     if (newValue == '' || isNaN(newValue)) {
                         $spop.message.warn('Поле Начальное значение не может быть пустым или не числом');
-                        state = false
+                        state = false;
                     }
                     break;
                 case 4:
                     if (newValue == '' || isNaN(newValue)) {
                         $spop.message.warn('Поле Вес импульса не может быть пустым или не числом');
-                        state = false
+                        state = false;
                     }
-                    break
+                    break;
             }
 
         });
@@ -429,6 +435,7 @@ main.Table = {
             });
             // вешаем события Редактирования , Сохранения и Отмены
             main.hundlers.addEventsTable(main.Table.object);
+
 
 
             main.Table.object.on('click', 'td', function() {
