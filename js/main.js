@@ -121,6 +121,16 @@ main.hundlers = {
         main.Table.dataTable.init(main.data.table);
         // при переключении страниц (пагинации) навешиваем обработчики
         main.Table.dataTable.dt.on('draw.dt', function(e, settings, len) {
+            $.each(main.elements.table.el.find('tr'), (i, el) => {
+                tr = $(el);
+                if (tr.hasClass('selected')) {
+                    tr.removeClass('selected');
+                }
+
+            })
+
+
+            .removeClass('.selected');
             main.hundlers.addEventsTable(main.Table.object);
         });
 
