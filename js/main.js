@@ -119,7 +119,6 @@ main.hundlers = {
     initActions: function() {
         main.hundlers.insertTabledata(main.data.main);
         main.Table.dataTable.init(main.data.table);
-
         // при переключении страниц (пагинации) навешиваем обработчики
         main.Table.dataTable.dt.on('draw.dt', function(e, settings, len) {
             main.hundlers.addEventsTable(main.Table.object);
