@@ -42,6 +42,8 @@ main.elements = {
 };
 
 main.data = {
+    // глобальная настройка состояния таблицы (number == 0 таблица не имеет спрятаных столбцов)
+    responsiveState:0,
     // Глобальная настройка первая загрузка
     firstInit: true,
     main: [],
@@ -127,10 +129,7 @@ main.hundlers = {
                     tr.removeClass('selected');
                 }
 
-            })
-
-
-            .removeClass('.selected');
+            });
             main.hundlers.addEventsTable(main.Table.object);
         });
 
@@ -241,7 +240,7 @@ main.hundlers = {
         $.each(inputField, (i, el) => {
             const inp = $(el);
             const inpprew = inp.data('prew');
-            var td = inp.closest('td');
+            const td = inp.closest('td');
             td.empty();
             td.text(inpprew);
         });
@@ -360,7 +359,6 @@ main.Table = {
                     [5, 10, 50, -1],
                     [5, 10, 50, 'Все']
                 ],
-                // "select": true,
                 "responsive": true,
                 "data": leftTempListData,
                 "columnDefs": [{
@@ -445,10 +443,20 @@ main.Table = {
             // вешаем события Редактирования , Сохранения и Отмены
             main.hundlers.addEventsTable(main.Table.object);
 
+            // фикс при сворачивании таблицы (responsive)
+            main.Table.dataTable.dt.on( 'responsive-resize', function ( e, datatable, columns ) {
+                main.data.responsiveState = columns.reduce( function (a,b) {
+                    return b === false ? a+1 : a;
+                }, 0 );
+            } );
 
-
-            main.Table.object.on('click', 'td', function() {
+            main.Table.object.on('click', 'td', function(e) {
                 const _this = $(this);
+                // фикс при сворачивании таблицы (responsive)
+                if( _this.prev().length===0 && main.data.responsiveState>0) {
+                    return;
+                }
+
                 const tr = main.Table.selected.closestTr(_this);
                 // клик по не активной строке и есть открытые окна редактироваания
                 if (!main.Table.selected.isSelectedTr(false, tr) && main.Table.hasOpenManual()) {
