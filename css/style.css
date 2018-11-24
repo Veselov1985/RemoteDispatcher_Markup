@@ -212,7 +212,7 @@ table.dataTable {
 
 table.dataTable tbody th,
 table.dataTable tbody td {
-    padding: 3px 10px !important;
+    padding: 3px 25px !important;
     cursor: pointer !important;
     color: #3f3f3f;
 }
@@ -282,7 +282,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 }
 
 .fltr {
-    background: url('./../img//fltr.png') 0 0 /cover no-repeat;
+    background: url('./../img/fltr.png') 0 0 /cover no-repeat;
 }
 
 .fltr.filtered {

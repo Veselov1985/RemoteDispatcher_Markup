@@ -1,6 +1,6 @@
 var main = {};
 main.debug = true;
-main.debugRoot = 'http://91.235.136.123:2525/';
+main.debugRoot = 'http://31.202.124.146:5555/'; // 'http://91.235.136.123:2525/';
 main.root = main.debug ? main.debugRoot : '';
 main.demo = false;
 main.mode = main.demo ? 'demo' : 'data';
@@ -268,7 +268,7 @@ main.hundlers = {
             'Abonent': `${data.Abonent}`,
             'Address': `${data.Address}`,
             'ImpWeight': main.demo ? `${data.ImpWeight}`.replace('.', ',') : `${data.ImpWeight}`.replace(',', '.'),
-            'ImpStart': main.demo ? `${data.ImpStart}`.replace('.', ',') : `${data.ImpWeight}`.replace(',', '.'),
+            'ImpStart': main.demo ? `${data.ImpStart}`.replace('.', ',') : `${data.ImpStart}`.replace(',', '.'),
         };
         chart.Ajax.sendFileToProccess(main.routes.setdevicedata, param, main.Table.setNewDatasResponse, id);
         main.css.showInit(tr);
@@ -295,13 +295,13 @@ main.hundlers = {
                     }
                     break;
                 case 3:
-                    if (newValue == '' || isNaN(newValue)) {
+                    if (newValue == '' || isNaN(newValue.replace(',','.'))) {
                         $spop.message.warn('Поле Начальное значение не может быть пустым или не числом');
                         state = false;
                     }
                     break;
                 case 4:
-                    if (newValue == '' || isNaN(newValue)) {
+                    if (newValue == '' || isNaN(newValue.replace(',','.'))) {
                         $spop.message.warn('Поле Вес импульса не может быть пустым или не числом');
                         state = false;
                     }
