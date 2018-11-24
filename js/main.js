@@ -162,7 +162,7 @@ main.hundlers = {
     },
     isetmainChartData: function(data) {
         let arrData = data.map(function(obj) {
-            return [moment.parseZone(obj.Date).valueOf(), obj.Value];
+            return [moment.parseZone(obj.Date).valueOf(), +obj.Value.toFixed(2)];
         });
         return arrData.sort((a, b) => a[0] - b[0]);
     },
