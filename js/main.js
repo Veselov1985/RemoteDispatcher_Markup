@@ -513,6 +513,21 @@ main.Table = {
             main.data.chartmain = main.hundlers.isetmainChartData(dataChart);
             chart.init.main(main.data.chartmain);
 
+            // Блок отрисовки второго графика(выбираем последнюю дату из прибора)
+            if (!main.data.firstInit && main.data.chartmain.length > 0) {
+                const value = main.data.chartmain[main.data.chartmain.length - 1][1];
+                const time = main.data.chartmain[main.data.chartmain.length - 1][0];
+                const _moment = moment.parseZone(time).format('YYYY-MM-DD').split('-');
+                const param = {
+                    'DeviceId': main.data.device,
+                    'Year': _moment[0],
+                    'Month': _moment[1],
+                    'Day': _moment[2]
+                };
+                chart.Ajax.sendFileToProccess(main.routes.getchartday, param, chart.hundlers.setChildData);
+                main.hundlers.span.setChildSpan(value);
+
+            }
             // first init block - Child
             if (main.data.firstInit && main.data.chartmain.length > 0) {
                 const value = main.data.chartmain[main.data.chartmain.length - 1][1];
