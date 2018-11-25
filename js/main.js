@@ -221,7 +221,7 @@ main.hundlers = {
             // инициализация полей для редактирования
             main.hundlers.initEditField(tr);
         } else {
-            main.css.pulse(main.css.pulse(main.Table.selected.findSelected(tr)));
+            main.css.pulse(main.Table.selected.findSelected(tr));
             // $spop.message.warn('Для редактирования устройства его нужно сделать активным');
         }
     },
