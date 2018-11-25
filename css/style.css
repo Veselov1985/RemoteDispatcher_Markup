@@ -316,28 +316,42 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     display: none;
 }
 
-
-
-/* @media screen and (max-width: 660px) {
-    .date-block .small-span {
-        font-size: 8px;
+/*Анимация для активной строки*/
+.selected--pulse {
+    animation-name: pulse;
+    -webkit-animation-name: pulse;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
     }
-    .subTitle h3 {
-        font-size: 8px;
+    50% {
+        transform: scale(1);
+        opacity: 1;
     }
-    #totalСonsumption {
-        font-size: 8px;
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
     }
 }
 
-@media screen and (max-width: 1510px) {
-    .date-block .small-span {
-        font-size: 10px;
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;
     }
-    .subTitle h3 {
-        font-size: 1.3rem;
+    50% {
+        -webkit-transform: scale(1);
+        opacity: 1;
     }
-    #totalСonsumption {
-        font-size: 1.3rem;
+    100% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;
     }
-} */
+}
+

@@ -221,7 +221,8 @@ main.hundlers = {
             // инициализация полей для редактирования
             main.hundlers.initEditField(tr);
         } else {
-            $spop.message.warn('Для редактирования устройства его нужно сделать активным');
+            main.css.pulse(main.css.pulse(main.Table.selected.findSelected(tr)));
+            // $spop.message.warn('Для редактирования устройства его нужно сделать активным');
         }
     },
     initEditField: function(tr) {
@@ -334,6 +335,10 @@ main.css = {
     },
     ofDisplay: function(el) {
         $(el).css({ display: 'none' });
+    },
+    pulse: function (tr) {
+        tr.addClass('selected--pulse');
+        setTimeout(()=>{tr.removeClass('selected--pulse')},2000)
     }
 };
 
@@ -460,6 +465,7 @@ main.Table = {
                 const tr = main.Table.selected.closestTr(_this);
                 // клик по не активной строке и есть открытые окна редактироваания
                 if (!main.Table.selected.isSelectedTr(false, tr) && main.Table.hasOpenManual()) {
+                    main.css.pulse(main.Table.selected.findSelected(_this));
                     $spop.message.warn('Сначало завершите редактирование выбраного устройства');
                     return;
                 }
