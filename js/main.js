@@ -43,7 +43,7 @@ main.elements = {
 
 main.data = {
     // глобальная настройка состояния таблицы (number == 0 таблица не имеет спрятаных столбцов)
-    responsiveState:0,
+    responsiveState: 0,
     // Глобальная настройка первая загрузка
     firstInit: true,
     main: [],
@@ -296,13 +296,13 @@ main.hundlers = {
                     }
                     break;
                 case 3:
-                    if (newValue == '' || isNaN(newValue.replace(',','.'))) {
+                    if (newValue == '' || isNaN(newValue.replace(',', '.'))) {
                         $spop.message.warn('Поле Начальное значение не может быть пустым или не числом');
                         state = false;
                     }
                     break;
                 case 4:
-                    if (newValue == '' || isNaN(newValue.replace(',','.'))) {
+                    if (newValue == '' || isNaN(newValue.replace(',', '.'))) {
                         $spop.message.warn('Поле Вес импульса не может быть пустым или не числом');
                         state = false;
                     }
@@ -336,9 +336,9 @@ main.css = {
     ofDisplay: function(el) {
         $(el).css({ display: 'none' });
     },
-    pulse: function (tr) {
+    pulse: function(tr) {
         tr.addClass('selected--pulse');
-        setTimeout(()=>{tr.removeClass('selected--pulse')},2000)
+        setTimeout(() => { tr.removeClass('selected--pulse') }, 2000)
     }
 };
 
@@ -436,7 +436,7 @@ main.Table = {
                     { title: "№ абонента" },
                     { title: "Адрес" },
                     { title: "Первичные показания, м3" },
-                    { title: "Вес импульса" },
+                    { title: "Вес импульса, дм3/имп." },
                     { title: "Показания, м3" },
                     { title: "Ошибка" },
                     { title: "Заряд батареи, В" },
@@ -449,16 +449,16 @@ main.Table = {
             main.hundlers.addEventsTable(main.Table.object);
 
             // фикс при сворачивании таблицы (responsive)
-            main.Table.dataTable.dt.on( 'responsive-resize', function ( e, datatable, columns ) {
-                main.data.responsiveState = columns.reduce( function (a,b) {
-                    return b === false ? a+1 : a;
-                }, 0 );
-            } );
+            main.Table.dataTable.dt.on('responsive-resize', function(e, datatable, columns) {
+                main.data.responsiveState = columns.reduce(function(a, b) {
+                    return b === false ? a + 1 : a;
+                }, 0);
+            });
 
             main.Table.object.on('click', 'td', function(e) {
                 const _this = $(this);
                 // фикс при сворачивании таблицы (responsive)
-                if( _this.prev().length===0 && main.data.responsiveState>0) {
+                if (_this.prev().length === 0 && main.data.responsiveState > 0) {
                     return;
                 }
 
