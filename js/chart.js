@@ -85,7 +85,7 @@ chart.hundlers = {
         // Обработка данных Child графика
         if (data.IsSuccess) {
             main.data.firstInit = false;
-            let dataChart = data.ChartDay.ChartHours.map(data =>{data.Value = +data.Value.toFixed(2); return data;});
+            let dataChart = data.ChartDay.ChartHours.map(data => { data.Value = +data.Value.toFixed(2); return data; });
             main.data.chartChild = main.hundlers.isetchildChartData(dataChart);
             // TODO возможно отображать расход за день нужно после получения данных с бэка (сейчас эти данные мы берем по клику на главном графике)
             // main.hundlers.span.setChildSpan();
@@ -250,6 +250,12 @@ chart.init = {
                     ]
                 }
             }],
+            "tooltip": {
+                dateTimeLabelFormats: {
+                    "millisecond": "%A, %b %e, %H:%M",
+                    "second": "%A, %b %e, %H:%M"
+                },
+            }
         });
     },
 };

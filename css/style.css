@@ -101,6 +101,7 @@ body {
 
 #lines_dataTables_wrapper {
     min-height: 400px;
+    margin-bottom: 50px;
 }
 
 .container-fluid {
@@ -310,13 +311,18 @@ table.dataTable.order-column.stripe tbody>tr.odd.selected>.sorting_1 {
 .table-bordered {
     border: 1px solid #cccccc !important;
 }
+
+
 /* мобильное разрешение   прячем кнопку редактирования*/
+
 table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     border-bottom: none;
     display: none;
 }
 
+
 /*Анимация для активной строки*/
+
 .selected--pulse {
     animation-name: pulse;
     -webkit-animation-name: pulse;
@@ -325,6 +331,7 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
     animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
 }
+
 @keyframes pulse {
     0% {
         transform: scale(0.9);
@@ -354,4 +361,3 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
         opacity: 0.7;
     }
 }
-

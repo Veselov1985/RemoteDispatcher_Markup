@@ -360,6 +360,7 @@ main.Table = {
                 "paging": true,
                 // "pagingType": 'simple_numbers',
                 "order": [],
+                "ordering": false,
                 "lengthMenu": [
                     [5, 10, 50, -1],
                     [5, 10, 50, 'Все']
@@ -432,14 +433,14 @@ main.Table = {
                     }
                 ],
                 "columns": [
-                    { title: "ID" },
+                    { title: "<div>ID</div>" },
                     { title: "№ абонента" },
-                    { title: "Адрес" },
-                    { title: "Первичные показания, м3" },
-                    { title: "Вес импульса, дм3/имп." },
-                    { title: "Показания, м3" },
+                    { title: "Адрес", width: "15%" },
+                    { title: "Первичные показания,<br> м3" },
+                    { title: "Вес импульса,<br> дм3/имп." },
+                    { title: "Показания,<br> м3" },
                     { title: "Ошибка" },
-                    { title: "Заряд батареи, В" },
+                    { title: "Заряд батареи,<br> В" },
                     { title: "Связь" },
                     { title: 'Редактировать' }
                 ],
