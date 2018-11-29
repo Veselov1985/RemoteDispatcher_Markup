@@ -433,7 +433,7 @@ main.Table = {
                     }
                 ],
                 "columns": [
-                    { title: "<div>ID</div>" },
+                    { title: "ID" },
                     { title: "№ абонента" },
                     { title: "Адрес", width: "15%" },
                     { title: "Первичные показания,<br> м3" },
